@@ -1,0 +1,9 @@
+@sk_titan_collision_radius = 240
+@sk_titan_formation_priority = 100
+
+@sk_titan_hp = 15000000
+@sk_titan_evasion = 5
+@sk_titan_build_time = 9000
+
+@sk_titan_upkeep_energy = 50
+@sk_titan_upkeep_alloys = 20

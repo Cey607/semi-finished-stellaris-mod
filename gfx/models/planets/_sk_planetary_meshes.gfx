@@ -1,0 +1,17 @@
+objectTypes = {
+
+	pdxmesh = {
+		name = "sk_bombardment_frame_mesh"
+		file = "gfx/models/planets/bombardment_frame.mesh"
+		cull_distance = 999999999.0f
+	}
+}
+
+
+
+
+
+
+
+
+

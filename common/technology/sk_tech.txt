@@ -1,0 +1,48 @@
+tech_sk_gaia_reform = {
+	cost = @tier4cost1
+	area = society
+	tier = 4
+	category = { new_worlds }
+	prerequisites = { "tech_terrestrial_sculpting" }
+	weight = @tier4weight1
+
+	prereqfor_desc = {
+		diplo_action = {
+			title = "TECH_UNLOCK_SK_GAIA_REFORM"
+			desc = "TECH_UNLOCK_SK_GAIA_REFORM_DESC"
+		}
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_expansion_adopt
+		}
+
+	}
+
+	ai_weight = {
+		factor = @terraforming_tech_ai_factor
+
+		modifier = {
+			factor = 2
+			OR = {
+				is_xenophobe = yes
+				is_hive_empire = yes
+			}
+		}
+
+		modifier = {
+			factor = 5
+			has_origin = origin_life_seeded
+		}
+		modifier = {
+			factor = 5
+			any_system_within_border = {
+				any_system_planet = {
+					is_planet_class = pc_nuked
+				}
+			}
+		}
+	}
+}

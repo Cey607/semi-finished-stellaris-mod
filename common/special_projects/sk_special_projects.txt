@@ -1,0 +1,18 @@
+special_project = {
+	key = "sk_gaia_forming"
+	#event_chain = "vultaum_chain"
+	cost = 100000
+	days_to_research = 365
+	tech_department = physics_technology
+	picture = GFX_evt_archaeological_dig
+	icon = "gfx/interface/icons/situation_log/situation_log_precursor.dds"
+
+	event_scope = planet_event
+
+	on_success = {
+		planet_event = { id = sk.400 }
+	}
+
+	on_fail = {
+	}
+}

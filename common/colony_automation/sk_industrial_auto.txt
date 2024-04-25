@@ -1,0 +1,45 @@
+SK_automate_capital_planet = {
+	category = "planet_automation_designation_construction"
+
+	available = {
+		has_designation = col_SK_capital
+	}
+
+	prio_districts = {
+		sk_district_city
+	}
+
+	buildings = {
+		1 = {
+			building = building_capital
+		}
+		
+		2 = {
+			building = sk_building_capital
+		}
+
+		3 = {
+			building = building_factory_1
+		}
+
+		4 = {
+			building = building_foundry_1
+		}
+
+		5 = {
+			building = building_embassy
+		}
+
+		6 = {
+			building = building_institute
+		}
+
+		7 = {
+			building = building_ministry_production
+		}
+
+		8 = {
+			building = building_research_lab_1
+		}
+	}
+}

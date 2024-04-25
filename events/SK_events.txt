@@ -1,0 +1,2030 @@
+namespace = sk
+####################################################################
+############################ 开局助手 ##############################
+####################################################################
+country_event = {
+	id = sk.10
+	title = sk.10.title
+	desc = sk.10.desc
+	picture_event_data = {
+		room = no_video_feed_room
+	}
+	mean_time_to_happen = {
+		months = 5
+	}
+	trigger = {
+		is_ai = no
+		NOT = { has_country_flag = sk_step_0 }
+
+	}
+	immediate = {
+		set_country_flag = sk_step_0
+	}
+	option = {
+		name = sk.10.a
+		country_event = {
+			id = sk.1000
+		}
+	}
+}
+
+country_event = {
+    id = sk.1000
+    title = sk.1000.title
+    desc = sk.1000.desc
+	diplomatic = yes
+
+	is_triggered_only = yes
+
+	picture = GFX_leader_recruitment_bg_renowned
+	event_window_type = leader_recruit
+
+	immediate = {
+		create_leader = {
+			class = commander
+			name = "鬿"
+			species = this
+			skill = 10
+			traits = {
+				trait = leader_trait_artillery_specialization_3
+				trait = leader_trait_master_gunner
+				trait = leader_trait_commanding_presence_3
+				trait = leader_trait_artillerist_3
+				trait = leader_trait_eater_chosen
+			}
+		}
+	}
+
+	picture_event_data = {
+		portrait = last_created_leader
+		room = galactic_custodian_room
+	}
+    
+	option = {
+		name = sk.1000.a
+		response_text = sk.1000.a.r
+		is_dialog_only = yes
+		set_country_flag = sk_dialog_step_1
+	}
+	option = {
+		name = sk.1000.b
+		allow = {
+			has_country_flag = sk_dialog_step_1
+		}
+		response_text = sk.1000.b.r
+		is_dialog_only = yes
+		hide_option_if_not_allowed = yes
+		set_country_flag = sk_dialog_step_2
+	}
+	option = {
+		name = sk.1000.c
+		allow = {
+			has_country_flag = sk_dialog_step_2
+		}
+		response_text = sk.1000.c.r
+		is_dialog_only = yes
+		hide_option_if_not_allowed = yes
+		set_country_flag = sk_dialog_step_3
+	}
+    option = {
+        name = sk.1000.d
+		allow = {
+			has_country_flag = sk_dialog_step_3
+		}
+		hide_option_if_not_allowed = yes
+		set_country_flag = sk_dialog_step_50
+        hidden_effect = {
+			country_event = {
+				id = sk.1005
+			}
+			remove_country_flag = sk_dialog_step_1
+			remove_country_flag = sk_dialog_step_2
+			remove_country_flag = sk_dialog_step_3
+			add_resource = { energy = -50 }
+            create_fleet = {
+				name = "鬿"
+				settings = {
+					uses_naval_capacity = no
+					can_upgrade = no
+					spawn_debris = no
+					can_change_leader = no
+				}
+				effect = {
+					set_owner = prev
+					set_location = {
+						target = root.capital_scope
+						distance = 10
+						angle = random
+					}
+					while = {
+						count = 1
+						create_ship = {
+							name = random
+							design = "魊II"
+							prefix = no
+							upgradable = no
+						}
+					}
+					#assign_leader = last_created_leader
+					#add_modifier = { modifier = "sk_ship_modifier" }
+				}
+			}
+        }
+    }
+	option = {
+        name = sk.1000.e
+		allow = {
+			has_country_flag = sk_dialog_step_3
+		}
+		hide_option_if_not_allowed = yes
+
+		hidden_effect = { 
+			country_event = {
+				id = sk.1010
+			}
+			remove_country_flag = sk_dialog_step_1
+			remove_country_flag = sk_dialog_step_2
+			remove_country_flag = sk_dialog_step_3
+			remove_global_flag = gray_goo_crisis_set
+			remove_global_flag = active_gray_goo
+			remove_global_flag = dragon_season
+			remove_global_flag = gray_goo_empire_set 
+			set_global_flag = gray_goo_crisis_set
+			set_global_flag = active_gray_goo
+		}
+	}
+}
+country_event = {
+    id = sk.1005
+	title = TRANSMISSION
+    desc = sk.1005.desc
+	option = {
+		name = sk.1005.a
+		hidden_effect = { 
+			last_created_leader = {
+				kill_leader = {
+					show_notification = no
+				}
+			}
+			country_event = {
+				id = sk.499
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = sk_dialog_step_f }
+				}
+				set_country_flag = sk_dialog_step_f
+			}
+			remove_country_flag = sk_dialog_step_50
+		}
+	}
+	diplomatic = yes
+	picture_event_data = {
+		portrait = last_created_leader
+		room = galactic_custodian_room
+	}
+
+    is_triggered_only = yes
+}
+country_event = {
+    id = sk.1010
+	title = TRANSMISSION
+    desc = sk.1010.desc
+	diplomatic = yes
+	picture_event_data = {
+		portrait = last_created_leader
+		room = galactic_custodian_room
+	}
+	option = {
+		name = sk.1010.a
+		hidden_effect = { 
+			last_created_leader = {
+				kill_leader = {
+					show_notification = no
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = sk_dialog_step_ff }
+				}
+				set_country_flag = sk_dialog_step_ff
+			}
+		}
+	}
+	
+
+    is_triggered_only = yes
+}
+# Create 
+country_event = {
+	id = sk.499
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		create_country = {
+			name = "NAME_SK"
+			type = senki
+			flag = random
+		}
+		last_created_country = {
+			establish_communications_no_message = root
+			create_leader = {
+				class = commander
+				species = root.owner_main_species
+				name = RANDOM
+				event_leader = yes
+				skill = 10
+				set_age = 0
+				traits = {
+					trait = leader_trait_artillery_specialization_3
+					trait = leader_trait_master_gunner
+					trait = leader_trait_commanding_presence_3
+					trait = leader_trait_artillerist_3
+					trait = leader_trait_eater_chosen
+				}
+			}
+			set_leader = last_created_leader
+			save_global_event_target_as = sk_country
+		}
+		save_global_event_target_as = sk_owner
+	}
+}
+
+# Main Menu (Initial)
+country_event = {
+	id = sk.500
+	title = "sk.500.title"
+	desc = "sk.500.a.desc"
+	desc = "sk.500.b.desc"
+	desc = "sk.500.c.desc"
+	desc = "sk.500.d.desc"
+
+	diplomatic = yes
+	picture = GFX_evt_mysterious_signal
+	picture_event_data = {
+		portrait = from.ruler
+		room = root
+	}
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_country_flag = sk_diplomacy_engaged }
+	}
+
+	immediate = {
+		set_country_flag = sk_diplomacy_engaged
+	}
+
+	after = {
+		hidden_effect = { remove_country_flag = sk_diplomacy_engaged }
+	}
+
+	trigger = {
+		from = { is_country_type = senki }
+		is_same_value = event_target:sk_owner
+		NOR = {
+			has_country_flag = sk_reforming
+		}
+	}
+	
+
+	option = { # 背景补充
+		name = sk.500.a
+		response_text = sk.500.a.response
+	}
+	option = { # 军用舰队
+		name = sk.500.b
+		response_text = sk.500.b.response
+		trigger = {
+			event_target:sk_owner = {
+				NOR = {
+					exists = event_target:sk_fleet
+					has_country_flag = sk_reforming
+				} 
+			}
+		}
+		hidden_effect = {
+			event_target:sk_owner = {
+				set_country_flag = sk_warship_active
+			} 
+			create_sk_warship_fleet = yes
+		}
+	}
+	option = { # 小修正
+		name = sk.500.c
+		response_text = sk.500.c.response
+		hidden_effect = {
+			root = {
+				add_modifier = {
+					modifier = sk_country_modifier
+				}
+			}
+		}
+	}
+	option = { # 大修正
+		name = sk.500.d
+		response_text = sk.500.c.response
+		#trigger = {
+		#	NOT = { has_country_flag = sk_army_active }
+		#}
+		hidden_effect = {
+			root = {
+				add_modifier = {
+					modifier = sk_ultimate_country_modifier
+				}
+			}
+		}
+	}
+	option = { # 啥也没有
+		name = sk.500.e
+		default_hide_option = yes
+	}
+}
+event = {#失去舰队触发器
+	id = sk.510
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_country = { is_country_type = senki }
+		exists = event_target:sk_owner
+		event_target:sk_owner = {
+			AND = {
+				has_country_flag = sk_warship_active
+				NOT = { exists = event_target:sk_fleet }
+			}
+		}
+	}
+
+	immediate = {
+		event_target:sk_owner = {
+			remove_country_flag = sk_warship_active
+			set_timed_country_flag = {
+				flag = sk_reforming
+				days = 180
+			}
+			country_event = { id = sk.511 }
+		}
+	}
+}
+country_event = {#失去舰队提示
+	id = sk.511
+	title = "sk.511.name"
+	desc = "sk.511.desc"
+	picture = GFX_evt_circuitry_modification
+	show_sound = event_radio_chatter
+
+	is_triggered_only = yes
+
+	option = {
+		name = sk.511.a
+	}
+}
+#country_event = {#延时移除flag  更正:使用timed_flag解决了
+#	id = sk.512
+#	hide_window = yes
+#
+#	is_triggered_only = yes
+#	immediate = {
+#		event_target:sk_owner = {
+#			remove_country_flag = sk_reforming
+#		}
+#	}
+#}
+###########################################################
+####################### 叛乱事件 ##########################
+###########################################################
+planet_event = { 
+	id = sk.9999 	#有机体叛军事件开始
+	title = sk.9999.name
+	desc = {
+		trigger = {
+			owner = {
+				OR = {
+					has_ethic = ethic_materialist
+					has_ethic = ethic_fanatic_materialist
+				}
+			}
+		}
+		text = sk.9999.desc.mater
+	}
+	desc = {
+		trigger = {
+			owner = {
+				OR = {
+					has_ethic = ethic_spiritualist
+					has_ethic = ethic_fanatic_spiritualist
+				}
+			}
+		}
+		text = sk.9999.desc.spiri
+	}
+	desc = {
+		trigger = {
+			owner = {
+				OR = {
+					has_ethic = ethic_militarist
+					has_ethic = ethic_fanatic_militarist
+				}
+			}
+		}
+		text = sk.9999.desc.milit
+	}
+	desc = {
+		trigger = {
+			owner = {
+				OR = {
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_fanatic_pacifist
+				}
+			}
+		}
+		text = sk.9999.desc.pacif
+	}
+	desc = {
+		trigger = {
+			owner = {
+				OR = {
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+				}
+			}
+		}
+		text = sk.9999.desc.egali
+	}
+	desc = {
+		trigger = {
+			owner = {
+				OR = {
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
+				}
+			}
+		}
+		text = sk.9999.desc.autho
+	}
+	desc = {
+		trigger = {
+			owner = {
+				OR = {
+					has_ethic = ethic_xenophile
+					has_ethic = ethic_fanatic_xenophile
+				}
+			}
+		}
+		text = sk.9999.desc.phile
+	}
+	desc = {
+		trigger = {
+			owner = {
+				OR = {
+					has_ethic = ethic_xenophobe
+					has_ethic = ethic_fanatic_xenophobe
+				}
+			}
+		}
+		text = sk.9999.desc.phobe
+	}
+	desc = {
+		trigger = {
+			owner = {
+				NOR = {
+					has_ethic = ethic_xenophobe
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_xenophile
+					has_ethic = ethic_fanatic_xenophile
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_fanatic_pacifist
+					has_ethic = ethic_militarist
+					has_ethic = ethic_fanatic_militarist
+					has_ethic = ethic_spiritualist
+					has_ethic = ethic_fanatic_spiritualist
+					has_ethic = ethic_materialist
+					has_ethic = ethic_fanatic_materialist
+				}
+			}
+		}
+		text = sk.9999.desc
+	}
+	picture = GFX_evt_psionics
+	show_sound = event_ai_started
+	is_triggered_only = yes
+	force_open = yes
+
+	pre_triggers = {
+		has_owner = yes
+	}
+
+	immediate = {
+		owner = {
+			save_event_target_as = organic_empire
+			save_event_target_as = current_uprising_originator #the old script accidentally saved the owner as two event targets, keeping it that way for safety, sorry!
+		}
+		set_planet_flag = machup_capital@root.owner
+		# event lock all fleets to prevent exploits
+		owner = { every_controlled_fleet = { set_event_locked = yes } }
+		# Calculate percentage of robot pops
+		owner = {
+			# Determine Robot Pop percentage of Empire.
+			export_trigger_value_to_variable = {
+				trigger = pop_percentage
+				parameters = {
+					limit = { is_pop_category = worker }
+				}
+				variable = var_country_robot_pops_percent
+			}
+
+			# Take percentage of Robot pops and average it together with 0.5 to get Uprising strength (0.25 to 0.75).
+			change_variable = { which = var_country_robot_pops_percent value = 0.5 }
+			divide_variable = { which = var_country_robot_pops_percent value = 2 }
+		}
+
+		# find and flag planets
+		owner = {
+			effect_on_blob = {
+				center = root.solar_system
+				owned_planets_percentage = var_country_robot_pops_percent
+				planet_limit = {
+					OR = {
+						controller = { is_same_value = root.owner }
+						solar_system = {
+							exists = starbase
+							starbase = { owner = { is_same_value = root.owner } }
+						}
+					}
+					solar_system = { # never flip any planets in the capital system
+						NOT = { any_system_planet = { is_same_value = root.owner.capital_scope } }
+					}
+					is_under_colonization = no
+				}
+				effect = {
+					set_star_flag = machup_system_flip
+				}
+			}
+			clear_variable = var_country_robot_pops_percent
+		}
+		# create machine species
+		create_species = {
+			name = random
+			class = HUM
+			portrait = random
+			traits = {
+				trait = random_traits
+			}
+			immortal = yes
+		}
+		# create machine country
+		random_list = {
+
+			100 = { # regular machine empire
+				owner = {
+					sk_create_country = yes  #老子自己写的effect你报个集贸错啊
+					event_target:current_uprising = {
+						country_event = { id = sk.9998 } # setup happens here now
+					}
+				}
+			}
+		}
+
+		event_target:organic_empire = { clear_variable = var_uprising_cruelty_to_robots }
+	}
+	option = {
+		name = sk.9999.a
+		custom_tooltip = sk.9999.a.tooltip
+
+		hidden_effect = {
+			event_target:current_uprising = {
+				add_modifier = {
+					modifier = uprising_ai_buff
+					days = 1800
+				}
+			}
+		}
+	}
+
+	option = { #叛军
+		name = sk.9999.b
+		trigger = {
+			event_target:current_uprising_originator = { is_ai = no }
+		}
+		custom_tooltip = sk.9999.b.tooltip
+		hidden_effect = {
+			if = {
+				limit = {
+					event_target:current_uprising_originator = { num_owned_planets > 0 }
+				}
+				event_target:current_uprising = {
+					set_player = event_target:current_uprising_originator
+					set_country_flag = machine_supremacy_achievement
+					add_modifier = {
+						modifier = uprising_player_buff
+						days = 1800
+					}
+				}
+			}
+		}
+	}
+
+	after = {
+		hidden_effect = {
+			event_target:current_uprising_originator = {
+				every_controlled_fleet = {
+					set_event_locked = no
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = sk.9998
+	hide_window = yes
+	is_triggered_only = yes
+
+
+	immediate = {
+		# saving uprising and host as event targets
+		save_event_target_as = current_uprising
+		from.owner = { save_event_target_as = current_uprising_originator }
+
+		# setting flags
+		set_country_flag = machine_uprising_country@from.owner
+		set_country_flag = machine_uprising_country
+		set_relation_flag = {
+			who = event_target:current_uprising_originator
+			flag = uprising_to_host_flag
+		}
+		from.owner = {
+			set_country_flag = machine_uprising_originator@root
+			set_country_flag = machine_uprising_originator
+			set_relation_flag = {
+				who = root
+				flag = host_to_uprising_flag
+			}
+		}
+
+		# setting graphical culture
+		set_graphical_culture = event_target:current_uprising_originator
+
+		# establish comms
+		every_country = {
+			limit = {
+				OR = {
+					has_communications = event_target:current_uprising_originator
+					intel_level = {
+						level > low
+						system = event_target:current_uprising_originator.capital_scope.solar_system
+					}
+					any_system = {
+						has_star_flag = machup_system_flip
+						prev = {
+							intel_level = {
+								level > low
+								system = prev
+							}
+						}
+					}
+				}
+			}
+			establish_communications_no_message = root
+			establish_contact = { who = root location = from }
+		}
+
+		# baseline resource stockpile
+		add_resource = {
+			energy = 20000
+			minerals = 20000
+			influence = 800
+			alloys = 10000
+			food = 10000 #just in case
+			consumer_goods = 5000 #just in case
+			rare_crystals = 1000
+			volatile_motes = 1000
+			exotic_gases = 1000
+			sr_dark_matter = 100
+		}
+		add_500_unity_per_year_passed = yes # scripted effect
+
+		# Machine Uprising opinion modifier
+		add_opinion_modifier = {
+			who = event_target:current_uprising_originator
+			modifier = opinion_machine_uprising_originator
+		}
+
+		event_target:current_uprising_originator = {
+			add_opinion_modifier = {
+				who = root
+				modifier = opinion_machine_uprising
+			}
+		}
+
+		# clear new contact opinion modifier
+		if = {
+			limit = {
+				has_opinion_modifier = {
+					who = event_target:current_uprising_originator
+					modifier = opinion_new_contact
+				}
+			}
+			remove_opinion_modifier = {
+				who = event_target:current_uprising_originator
+				modifier = opinion_new_contact
+			}
+		}
+
+		# flip capital planet and add at least 10 Machine pops
+		from = {
+			# flip military stations
+			solar_system = {
+				every_fleet_in_system = {
+					limit = {
+						exists = owner
+						owner = { is_same_value = event_target:current_uprising_originator }
+						any_controlled_ship = { is_ship_class = shipclass_military_station }
+					}
+					set_owner = root
+				}
+			}
+			set_owner = root
+			set_controller = root
+			set_capital = yes
+
+			solar_system = {
+				if = {
+					limit = {
+						exists = starbase
+					}
+					starbase = {
+						set_owner = root
+						if = {
+							limit = { has_starbase_size = starbase_outpost }
+							set_starbase_size = starbase_starport
+							set_starbase_module = {
+								slot = 1
+								module = shipyard
+							}
+							set_starbase_module = {
+								slot = 2
+								module = shipyard
+							}
+						}
+						else_if = {
+							limit = {
+								NOT = { has_starbase_module = shipyard }
+							}
+							set_starbase_module = {
+								slot = 1
+								module = shipyard
+							}
+							set_starbase_module = {
+								slot = 2
+								module = shipyard
+							}
+						}
+					}
+				}
+				else = {
+					create_starbase = {
+						size = starbase_starport
+						module = shipyard
+						owner = root
+					}
+				}
+			}
+
+			while = {
+				#limit = { free_housing > 0 }
+				count = 10
+				create_pop = {
+					species = root
+				}
+			}
+
+			if = {
+				limit = {
+					count_owned_pop = {
+						count < 5
+						limit = { is_exact_same_species = root }
+					}
+				}
+				while = {
+					limit = {
+						count_owned_pop = {
+							count < 5
+							limit = { is_exact_same_species = root }
+						}
+					}
+					random_owned_pop = {
+						limit = { NOT = { is_exact_same_species = root } }
+						kill_pop = yes
+						prev = {
+							create_pop = {
+								species = root
+							}
+						}
+					}
+				}
+			}
+
+			# create armies
+			if = {
+				limit = { root = { has_civic = civic_machine_terminator } }
+				# more armies if exterminator
+				while = {
+					count = 6
+					create_army = {
+						owner = root
+						type = machine_assault_1
+					}
+				}
+			}
+			else = {
+				# regular armies
+				while = {
+					count = 3
+					create_army = {
+						owner = root
+						type = cybrex_warform
+					}
+				}
+			}
+
+			# flip remaining flagged planets
+			while = {
+				count = 100
+				limit = {
+					any_system = {
+						has_star_flag = machup_system_flip
+						exists = starbase
+						starbase = {
+							owner = { is_same_value = event_target:current_uprising_originator }
+						}
+					}
+				}
+				random_system = {
+					limit = {
+						has_star_flag = machup_system_flip
+						exists = starbase
+						starbase = {
+							owner = { is_same_value = event_target:current_uprising_originator }
+						}
+					}
+					starbase = { set_owner = root }
+				}
+			}
+			event_target:current_uprising_originator = {
+				every_owned_planet = {
+					limit = {
+						solar_system = {
+							#has_star_flag = machup_system_flip@event_target:current_uprising_originator
+							has_star_flag = machup_system_flip
+						}
+					}
+
+					# flip military stations
+					solar_system = {
+						every_fleet_in_system = {
+							limit = {
+								exists = owner
+								owner = { is_same_value = event_target:current_uprising_originator }
+								any_controlled_ship = { is_ship_class = shipclass_military_station }
+							}
+							set_owner = root
+						}
+					}
+
+					set_planet_flag = been_flipped
+					set_owner = root
+					set_controller = root
+
+					export_trigger_value_to_variable = {
+						trigger = free_housing
+						variable = housing_var
+					}
+					if = {
+						limit = {
+							OR = {
+								check_variable = {
+									which = housing_var
+									value < 2
+								}
+								check_variable = {
+									which = housing_var
+									value > 25
+								}
+							}
+						}
+						set_variable = {
+							which = housing_var
+							value = 15
+						}
+					}
+					while = {
+						count = housing_var
+						create_pop = {
+							species = root
+						}
+					}
+					clear_variable = housing_var
+
+					if = {
+						limit = {
+							count_owned_pop = {
+								count < 5
+								limit = { is_exact_same_species = root }
+							}
+						}
+						while = {
+							limit = {
+								count_owned_pop = {
+									count < 5
+									limit = { is_exact_same_species = root }
+								}
+							}
+							count = 5
+							random_owned_pop = {
+								limit = { NOT = { is_exact_same_species = root } }
+								kill_pop = yes
+								prev = {
+									create_pop = {
+										species = root
+									}
+								}
+							}
+						}
+					}
+
+					# create armies on planets
+					if = {
+						limit = { root = { has_civic = civic_machine_terminator } }
+						# more armies if exterminator
+						while = {
+							count = 6
+							create_army = {
+								owner = root
+								type = machine_assault_2
+							}
+						}
+					}
+					else = {
+						# regular armies
+						while = {
+							count = 4
+							create_army = {
+								owner = root
+								type = machine_assault_2
+							}
+						}
+					}
+					if = {
+						limit = { is_under_colonization = yes }
+						destroy_colony = yes
+					}
+				}
+			}
+			every_system = {
+				limit = {
+					has_star_flag = machup_system_flip
+				}
+				remove_star_flag = machup_system_flip
+			}
+		}
+
+		# get host's technologies
+		copy_techs_from = {
+			target = event_target:current_uprising_originator
+			#except = {
+			#	# Robots
+			#	tech_robotic_workers
+			#	tech_droid_workers
+			#	tech_synthetic_workers
+			#	# Food
+			#	tech_eco_simulation
+			#	tech_gene_crops
+			#	tech_nano_vitality_crops
+			#	tech_nutrient_replication
+			#	# Misc
+			#	tech_frontier_health
+			#	tech_frontier_hospital
+			#	tech_telepathy
+			#	tech_precognition_interface
+			#	tech_psi_jump_drive_1
+			#	tech_galactic_markets
+			#	tech_subdermal_stimulation
+			#	tech_global_research_initiative
+			#	tech_neural_implants
+			#	tech_psionic_theory
+			#	# Non-Machine Robomodding
+			#	tech_robomodding
+			#	tech_robomodding_points_1
+			#	tech_robomodding_points_2
+			#	# Genetics
+			#	tech_genome_mapping
+			#	tech_vitality_boosters
+			#	tech_epigenetic_triggers
+			#	tech_cloning
+			#	tech_gene_banks
+			#	tech_gene_seed_purification
+			#	tech_morphogenetic_field_mastery
+			#	tech_gene_tailoring
+			#	tech_glandular_acclimation
+			#	tech_gene_expressions
+			#	tech_selected_lineages
+			#	tech_capacity_boosters
+			#	# Horizon Signal
+			#	tech_akx_worm_1
+			#	tech_akx_worm_2
+			#	tech_akx_worm_3
+			#}
+		}
+
+		# survey host's surveyed planets
+		every_galaxy_planet = {
+			limit = {
+				is_surveyed = {
+					who = event_target:current_uprising_originator
+					status = yes
+				}
+			}
+			set_surveyed = {
+				surveyed = yes
+				surveyor = root
+			}
+		}
+
+		# declare war on host
+		declare_war = {
+			target = event_target:current_uprising_originator
+			name = {
+				key = "NAME_Machine_Uprising_War"
+				variable_string = "[This.MainDefender.GetAdj]"
+			}
+			# "[This.MainDefender.GetAdj] Machine Uprising"
+			attacker_war_goal = "wg_machine_uprising"
+		}
+
+
+		# create fleets
+		if = {
+			limit = { has_civic = civic_machine_terminator }
+
+			# exterminator fleets, 150% naval cap
+
+			create_fleet_from_naval_cap = 0.2
+			random_owned_planet = {
+				last_created_fleet = {
+					set_location = prev
+				}
+			}
+
+			reroll_random = yes
+			create_fleet_from_naval_cap = 0.3
+			random_owned_planet = {
+				last_created_fleet = {
+					set_location = prev
+				}
+			}
+
+			reroll_random = yes
+			create_fleet_from_naval_cap = 0.4
+			random_owned_planet = {
+				last_created_fleet = {
+					set_location = prev
+				}
+			}
+
+			reroll_random = yes
+			create_fleet_from_naval_cap = 0.6
+			random_owned_planet = {
+				last_created_fleet = {
+					set_location = prev
+				}
+			}
+		}
+		else = {
+			# regular fleets, 80% naval cap
+			create_fleet_from_naval_cap = 0.1
+			random_owned_planet = {
+				last_created_fleet = {
+					set_location = prev
+				}
+			}
+			reroll_random = yes
+			create_fleet_from_naval_cap = 0.2
+			random_owned_planet = {
+				last_created_fleet = {
+					set_location = prev
+				}
+			}
+			reroll_random = yes
+			create_fleet_from_naval_cap = 0.4
+			random_owned_planet = {
+				last_created_fleet = {
+					set_location = prev
+				}
+			}
+		}
+
+		#science
+		create_fleet = {
+			effect = {
+				set_owner = root
+
+				create_ship = {
+					name = random
+					random_existing_design = science
+				}
+
+				set_fleet_stance = evasive
+				set_location = root.capital_scope
+
+				owner = {
+					create_leader = {
+						class = scientist
+						sub_type = survey
+						name = random
+						species = owner_main_species
+					}
+				}
+				set_leader = last_created_leader
+			}
+		}
+
+		#constructor
+		create_fleet = {
+			effect = {
+				set_owner = root
+
+				create_ship = {
+					name = random
+					random_existing_design = constructor
+				}
+
+				set_fleet_stance = evasive
+				set_location = root.capital_scope
+			}
+		}
+
+		every_controlled_fleet = {
+			#limit = { event_locked = yes }
+			set_event_locked = no
+		}
+		every_playable_country = {
+			limit = {
+				has_communications = event_target:current_uprising_originator
+				NOR = {
+					is_same_value = root
+					is_same_value = event_target:current_uprising_originator
+				}
+			}
+			country_event = { id = sk.9997 days = 5 }
+		}
+		observer_event = { id = sk.9996 }
+	}
+}
+country_event = {
+	id = sk.9997
+	title = sk.9997.name
+	desc = {
+		trigger = {
+			OR = {
+				has_authority = auth_machine_intelligence
+				has_country_flag = synthetic_empire
+			}
+		}
+		text = sk.9997.desc.machine
+	}
+	desc = {
+		trigger = {
+			NOR = {
+				has_authority = auth_machine_intelligence
+				has_country_flag = synthetic_empire
+			}
+		}
+		text = sk.9997.desc
+	}
+	picture = GFX_evt_organic_oppression
+	location = fromfrom
+	is_triggered_only = yes
+	show_sound = event_robo
+
+	trigger = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		exists = event_target:current_uprising_originator
+		exists = event_target:current_uprising
+		NOR = {
+			is_same_value = event_target:current_uprising_originator
+			is_same_value = event_target:current_uprising
+		}
+	}
+
+	option = {
+		name = sk.9997.a
+	}
+}
+observer_event = {
+	id = sk.9996
+	title = sk.9997.name
+	desc = sk.9997.desc
+	picture = GFX_evt_psionics
+	location = fromfrom
+	show_sound = event_robo
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+	}
+}
+#################################################################
+########################### 天灾先导 #############################
+#################################################################
+
+country_event = {
+	id = sk.299
+	hide_window = yes
+	mean_time_to_happen = {
+		years = 5
+	}
+	trigger = {
+		is_ai = no
+		NOT = { has_global_flag = sk_pirate_invading }
+		mid_game_years_passed >= 1
+		#end_game_years_passed < 0
+	}
+	immediate = {
+		# 保证20个月内不会快速触发
+		set_timed_global_flag = {
+			flag = sk_pirate_invading
+			months = 20
+		}
+		random_country = {
+			limit = {
+				is_country_type = default
+			}
+			capital_scope = {
+				save_event_target_as = sk_target_planet
+				#solar_system = { save_event_target_as = capital_system }
+			}
+			# 舰队初始星系和初始行星位置
+			random_system_within_border = {
+				save_event_target_as = sk_pirate_system
+				random_system_planet = {
+					save_event_target_as = sk_pirate_home
+				}
+			}	
+			save_event_target_as = sk_pirate_target
+			#owner_species = { save_event_target_as = owner_species }
+			# 统计目标国家舰队实力
+			export_trigger_value_to_variable = {
+				trigger = fleet_power
+				variable = var_fleet_power
+			}
+			#舰队实力的比例
+			multiply_variable = { 
+				which = var_fleet_power
+				value = 0.5
+			}
+			ceiling_variable = var_fleet_power
+			# 第一次触发时创建国家并全部宣战
+			if = { 
+				limit = { 
+					NOT = {
+						has_global_flag = sk_pirate_existed
+					}
+				}
+				set_global_flag = sk_pirate_existed
+				create_species = {
+					name = "魊"
+					class = "Schalebot"
+					portrait = "Schale"
+					traits = random
+					immortal = yes
+					effect = {
+						save_event_target_as = sk_pirate_species
+					}
+				}	
+				create_country = {
+					name = "NAME_sk_Pirates"
+					type = sk_pirate
+					species = event_target:sk_pirate_species
+					name_list = "PRT1"
+					ethos = random
+					flag = {
+						icon= {
+							category = "special"
+							file = random
+						}
+						background = {
+							category = "backgrounds"
+							file = "00_solid.dds"
+						}
+						colors ={
+							"red"
+							"black"
+							"null"
+							"null"
+						}
+					}
+					effect = {
+						#set_ai_personality = berserk_fallen_empire_machine
+						
+						create_ship_design = { design = "魊I" }
+						add_ship_design = last_created_design
+						create_ship_design = { design = "魊II" }
+						add_ship_design = last_created_design
+						create_ship_design = { design = "鬿I" }
+						add_ship_design = last_created_design
+						create_ship_design = { design = "鬿II" }
+						add_ship_design = last_created_design
+						create_ship_design = { design = "鬿III" }
+						add_ship_design = last_created_design
+						create_ship_design = { design = "鬿V" }
+						add_ship_design = last_created_design			
+						ruler = {
+							add_skill = 9
+						}
+						save_global_event_target_as = sk_pirate_band
+						add_modifier = {
+							modifier = sk_event_ship_modifier
+						}
+						set_graphical_culture = "ai_01"
+						set_faction_hostility = {
+							set_hostile = yes
+							set_neutral = no
+							set_friendly = no
+						}
+						set_name = random
+						randomize_flag_symbol = yes
+						every_country = {
+							establish_communications_no_message = prev
+						}
+					}
+				}
+				# 蠢驴完蛋操的不宣战就不能用轨道轰炸，注册天灾国家还要覆盖文件一大堆兼容问题
+				every_country = {
+					limit = {
+						OR = {
+							is_country_type = default
+						}
+					}
+					declare_war = {
+						target = event_target:sk_pirate_band
+						attacker_war_goal = wg_declared_crisis
+					}
+				}	
+			}
+		}
+		# 根据变量运算结果创建舰队
+		event_target:sk_pirate_band = {
+			create_leader = {
+				class = commander
+				species = owner_main_species
+				name = random
+				skill = 5
+			}
+			create_fleet = {
+				name = "NAME_sk_Pirate_Fleet"
+				settings = {
+					can_upgrade = no
+					spawn_debris = no
+					can_change_leader = no
+				}
+				effect = {
+					set_owner = event_target:sk_pirate_band
+					create_sk_pirate_fleet_2 = {
+						FLEET_POWER = event_target:sk_pirate_target.var_fleet_power
+					}  #自己写的报错是正常的
+					#create_sk_pirate_fleet = yes
+					save_event_target_as = sk_pirate_fleet
+					set_fleet_flag = sk_pirate_fleet
+					set_location = event_target:sk_pirate_home
+					set_fleet_stance = aggressive
+					assign_leader = last_created_leader
+					set_aggro_range = 800
+					set_aggro_range_measure_from = self
+					set_fleet_bombardment_stance = sk_armageddon   #空投登陆，5%破坏度空投一批
+					# 硬指定寻路逻辑
+					auto_move_to_planet = {
+						target = event_target:sk_target_planet
+						clear_auto_move_on_arrival = yes
+					}
+				
+				}
+			}
+		}
+		# 脉冲寻路先导事件
+		event_target:sk_pirate_fleet = {
+			fleet_event = {
+				id = sk.605
+				days = 45
+			}
+		}
+		# 舰队实力不到100k不生成二级突触，100k到150k30%二级，150k以上一级概率权重削弱70%
+		event_target:sk_pirate_target = {
+			if = { #这个域是触发国家
+				limit = { 
+					fleet_power > 60000
+				}
+				random_list = {
+					70 = {
+						modifier = {
+							fleet_power > 150000
+							factor = 0.3
+						}
+						create_sk_pirate_base_1 = yes 
+					}
+					30 = {
+						modifier = {
+							fleet_power <= 100000
+							factor = 0
+						}
+						create_sk_pirate_base_2 = yes
+					}
+				}
+			}
+		}
+		# 清除变量，全局提示
+		clear_variable = var_fleet_power
+		every_country = {
+			limit = {
+				is_ai = no
+			}
+			country_event = { id = sk.300 }
+		}
+	}
+}
+
+#全局提示
+country_event = {
+	id = sk.300
+	title = sk.300.title
+	desc = sk.300.desc
+	picture = GFX_evt_pirate_armada
+	show_sound = event_space_battle
+	location = event_target:sk_pirate_home 
+
+	is_triggered_only = yes
+
+	option = {
+		name = sk.300.a
+	}
+}
+###################################################################
+########################### 登陆轰炸 ##############################
+###################################################################
+# Fired by on_planet_bombarded
+# This = Planet
+# From = Bombarder
+planet_event = {
+	id = sk.310
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_orbital_bombardment_stance = sk_armageddon
+		OR = {
+			AND = {
+				planet_devastation >= 5
+				NOT = { is_variable_set = sk_armageddon_army }
+			}
+			AND = {
+				is_variable_set = sk_armageddon_army
+				check_variable_arithmetic = {
+					which = sk_armageddon_army
+					add = 1
+					divide = trigger:planet_devastation
+					value <= 0.2
+				}
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { 
+				NOT = {
+					has_planet_flag = sk_armageddon_bombared
+				}
+			}
+			set_planet_flag = sk_armageddon_bombared
+		}
+		# Set variables
+		if = {
+			limit = {
+				NOT = { is_variable_set = sk_armageddon_army }
+			}
+			set_variable = {
+				which = sk_armageddon_army
+				value = 1
+			}
+		}
+		else = {
+			change_variable = {
+				which = sk_armageddon_army
+				value = 1
+			}
+		}
+		# Add army
+		if = {
+			limit = { 
+				from = {
+					is_country_type = sk_pirate
+				}
+			}
+			from = {
+				set_country_flag = sk_armageddon_bombarder_country
+			}
+			while = {
+				count = 3
+				create_army = {
+					name = random
+					owner = from
+					type = "sk_landing_force" #魃
+				}
+			}
+		}
+		else_if = {
+			limit = { 
+				from = {
+					resource_stockpile_compare = {
+						resource = minerals
+						value >= 600
+					}
+				}
+			}
+			from = {
+				add_resource = {
+					minerals = -600
+				}
+				#save_event_target_as = sk_armageddon_bombarder
+				set_country_flag = sk_armageddon_bombarder_country
+			}
+			while = {
+				count = 3
+				create_army = {
+					name = random
+					owner = from
+					type = "sk_landing_force" #魃
+				}
+			}
+		}
+	}
+}
+
+# on_planet_conquer
+
+planet_event = {
+	id = sk.315
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_planet_flag = sk_armageddon_bombared
+	}
+	# 清除登陆部队
+	immediate = {
+		from = {
+			every_owned_army = {
+				limit = {
+					army_type = sk_landing_force
+				}
+				remove_army = yes
+			}
+		}
+	}
+	#创建防御部队
+	after = {
+		remove_planet_flag = sk_armageddon_bombared
+		export_trigger_value_to_variable = {
+			trigger = num_pops
+			variable = var_pops
+		}
+		divide_variable = {
+			which = var_pops
+			value = 15
+		}
+		ceiling_variable = var_pops
+		this = {
+			#add_building = sk_building_capital
+			while = {
+				count = var_pops
+				create_army = {
+					owner = from
+					type = sk_machine_planet_guardian
+				}
+			}
+		}
+		#创建人口
+		this = {
+			while = {
+				count = var_pops
+				create_pop = {
+					species = from.owner_main_species
+				}
+			}
+		}
+		clear_variable = var_pops
+		clear_variable = sk_armageddon_army
+	}
+}
+####################################################################
+############################## 幻景盖亚 ############################
+####################################################################
+# 等会写个裂隙事件送需要的科技
+# 算了裂隙好麻烦,待会移植到科技树里
+event = {
+	id = sk.397
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		any_country = {
+			is_ai = no
+			has_technology = tech_sk_gaia_reform
+			NOT = {
+				has_global_flag = sk_gaia_chosen
+			}
+		}
+	}
+
+	immediate = {
+		every_country = {
+			limit = {
+				is_ai = no
+				has_technology = tech_sk_gaia_reform
+				NOT = {
+					has_global_flag = sk_gaia_chosen
+				}
+			}
+			country_event = {
+				id = sk.398 days = 730
+			}
+		}
+	}
+}
+
+country_event = {
+	id = sk.398
+	title = sk.398.title
+	desc = sk.398.desc
+	picture = GFX_evt_ship_in_orbit_3
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_country = {
+			is_ai = no
+			has_technology = tech_sk_gaia_reform
+			NOT = {
+				has_global_flag = sk_gaia_chosen
+			}
+		}
+	}
+	
+	immediate = {
+		set_global_flag = sk_gaia_chosen
+		random_system_within_border = {
+			random_system_planet = {
+				limit = {
+					uninhabitable_regular_planet = yes
+				}
+				save_event_target_as = sk_gaia_change_candidate
+				enable_special_project = {
+					name = "sk_gaia_forming"
+					location = this
+					owner = root
+				}
+			}
+		}
+	}
+	location = event_target:sk_gaia_change_candidate
+
+	option = {
+		name = sk.398.a
+	}
+}
+
+country_event = {
+	id = sk.399
+	title = sk.399.title
+	desc = sk.399.desc
+	picture = GFX_evt_astral_scar
+	location = event_target:sk_changed_gaia
+
+	is_triggered_only = yes 
+	option = {
+		name = sk.399.a
+	}
+}
+
+planet_event = {
+	id = sk.400
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_planet_flag = sk_changed_gaia
+		if = {
+			limit = {
+				NOT = { is_planet_class = pc_shattered_2 }
+			}
+			save_event_target_as = sk_changed_gaia
+			solar_system.owner = {
+				country_event = {
+					id = sk.405 days = 7100
+				} 
+				country_event = {
+					id = sk.410 days = 7300
+				}
+				country_event = {
+					id = sk.399 days = 1
+				}
+			} 
+			planet_event = {
+				id = sk.415 days = 7300
+			}
+			change_pc = pc_gaia
+			add_modifier = {
+				modifier = sk_planet_modifier_temp
+				days = 7300
+			}
+			while = {
+				count = 15
+				add_deposit = d_energy_10
+				add_deposit = d_minerals_10
+				add_deposit = d_food_10
+				add_deposit = d_alloys_10
+				add_deposit = d_dark_matter_deposit_10
+				add_deposit = d_volatile_motes_5
+				add_deposit = d_rare_crystals_5
+				add_deposit = d_exotic_gases_5
+				add_deposit = d_nanites_deposit
+				add_deposit = d_zro_deposit_5
+				add_deposit = d_zro_deposit_5
+				add_deposit = d_sentinels_metal
+				while = {
+					count = 3
+					add_deposit = d_society_10
+					add_deposit = d_physics_10
+					add_deposit = d_engineering_10
+				}
+				while = {
+					count = 2
+					add_deposit = d_vast_unity_deposit
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = sk.405
+	title = sk.405.title
+	desc = sk.405.desc
+	picture = GFX_evt_astral_scar
+	location = event_target:sk_changed_gaia
+
+	is_triggered_only = yes 
+	option = {
+		name = sk.405.a
+	}
+}
+
+country_event = {
+	id = sk.410
+	title = "sk.410.title"
+	desc = "sk.410.desc"
+	picture = GFX_evt_crashed_station
+	is_triggered_only = yes
+	location = event_target:sk_changed_gaia
+	option = {
+		name = sk.410.a
+	}
+}
+
+planet_event = {
+	id = sk.415
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		remove_global_flag = sk_gaia_chosen
+		remove_planet_flag = sk_changed_gaia
+		event_target:sk_changed_gaia = {
+			remove_modifier = sk_planet_modifier_temp
+			change_pc = pc_shattered_2
+			clear_deposits = yes
+			add_deposit = d_physics_10
+		}
+	}
+}
+
+#############################################################
+#################亚空间城邦舰队移动逻辑######################
+#############################################################
+##占位*600
+# 进攻型策略重置舰队移动目标
+fleet_event = {
+	id = sk.600
+	hide_window = yes 
+	is_triggered_only = yes
+
+	immediate = {
+		set_timed_fleet_flag = {
+			flag = sk_pirate_move_complete
+			days = 180
+		}
+		solar_system = {
+			if = {
+				limit = { 
+					any_system_planet = {
+						is_colony = yes
+						NOT = {
+							is_controlled_by = root.owner
+						}
+					}
+				}
+				random_system_planet = {
+					limit = {
+						is_colony = yes
+						NOT = {
+							is_owned_by = root.owner
+						}
+					}
+					save_event_target_as = sk_fleet_new_location
+				}
+			}
+			else = {
+				closest_system = {
+					limit = {
+						NOR = {
+							is_owned_by = prevprev.owner
+							any_fleet_in_system = {
+								has_fleet_flag = sk_pirate_fleet
+							}
+						}
+						OR = {
+							AND = {
+								any_system_planet = {
+									is_colony = yes
+									NOT = {
+										is_controlled_by = root.owner
+									}
+								}
+							}
+							AND = {
+								any_system_planet = {
+									is_colony = no
+									is_colonizable = yes
+								}
+							}
+						}
+					}
+					if = {
+						limit = { 
+							any_system_planet = {
+								is_colony = yes
+								NOT = {
+									is_controlled_by = root.owner
+								}
+							}
+						}
+						random_system_planet = {
+							limit = {
+								is_colony = yes
+								NOT = {
+									is_controlled_by = root.owner
+								}
+							}
+							save_event_target_as = sk_fleet_new_location
+						}	
+					}
+					#else = {
+					#	star = {
+					#		# 这不是设置target了么
+					#		save_event_target_as = sk_fleet_new_location
+					#	}
+					#}
+				}	
+			}
+		}
+		auto_move_to_planet = {
+			target = event_target:sk_fleet_new_location
+			clear_auto_move_on_arrival = yes
+		}
+	}
+}
+#什么几把事件，刚刚设置的target就不认了（待测试）
+fleet_event = {
+	id = sk.605
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				# 正常情况下，如果任务一直顺利，这个事件是没有效果的
+				NOT = {
+					has_fleet_flag = sk_pirate_move_complete
+				}
+			}
+			# 如果没有执行成功，立刻触发一次600事件以重置目标星球
+			fleet_event = {
+				id = sk.600
+			}
+		}
+		else_if = {
+			limit = { 
+				is_ship_size = sk_behemoth
+			}
+			fleet_event = {
+				id = sk.610
+			}
+		}
+	}
+	#180刻循环触发
+	after = {
+		fleet_event = {
+			id = sk.605
+			days = 90
+		}
+	}
+}
+
+fleet_event = {
+	id = sk.610
+	hide_window = yes 
+	is_triggered_only = yes
+
+	immediate = {
+		set_timed_fleet_flag = {
+			flag = sk_pirate_construction_move_complete
+			days = 180
+		}
+		solar_system = {
+			if = {
+				limit = { 
+					NOT={ exists = starbase }
+				}
+				star = {
+					save_event_target_as = sk_fleet_new_location
+				}
+			}
+			else = {
+				closest_system = {
+					limit = {
+						NOR = {
+							is_owned_by = prevprev.owner
+							any_fleet_in_system = {
+								controller = {
+									is_hostile_to = root.owner
+								}
+							}
+						}
+					}
+					star = {
+						save_event_target_as = sk_fleet_new_location
+					}	
+				}
+			}	
+		}
+		auto_move_to_planet = {
+			target = event_target:sk_fleet_new_location
+			clear_auto_move_on_arrival = yes
+		}
+	}
+}
+
+#####################################################################
+####################亚空间城邦恒星基地创建###########################
+#####################################################################
+###占位*700
+
+##triggered by on_fleet_enter_orbit
+fleet_event = {
+	id = sk.700
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		solar_system = {
+			if = {
+				limit = {
+					any_fleet_in_system = {
+						is_ship_size = sk_behemoth
+					}
+					NOT={ exists = starbase }	
+				}
+				solar_system = { create_sk_citadel = yes }  
+			}
+		}
+	}
+}

@@ -1,0 +1,901 @@
+sk_create_country = {
+	create_country = {
+		name = random
+		type = default
+		ignore_initial_colony_error = yes
+		day_zero_contact = no
+		species = last_created_species
+		ethos = random
+		authority = auth_democratic
+		civics = random
+		flag = random
+		origin = origin_separatists
+		effect = {
+			modify_species = {
+				species = this
+				add_traits_at_start_of_list = yes
+			}
+			add_modifier = {
+				modifier = sk_uprising
+				days = 1800
+			}
+			save_event_target_as = current_uprising
+		}
+	}
+}
+
+create_sk_warship_fleet = {
+	create_leader = {
+		class = commander
+		species = root.owner_main_species
+		name = RANDOM
+		event_leader = yes
+		skill = 10
+		set_age = 0
+		traits = {
+			trait = leader_trait_artillery_specialization_3
+			trait = leader_trait_master_gunner
+			trait = leader_trait_commanding_presence_3
+			trait = leader_trait_artillerist_3
+			trait = leader_trait_eater_chosen
+		}
+	}
+	create_fleet = {
+		name = "鬿"
+		settings = {
+			uses_naval_capacity = no
+			spawn_debris = no
+			can_change_leader = no
+		}
+		effect = {
+			save_global_event_target_as = sk_fleet
+			set_owner = prev
+			set_location = {
+				target = root.capital_scope
+				distance = 10
+				angle = random
+			}
+			create_ship = {
+				name = random
+				design = "鬿V"
+				prefix = no
+				upgradable = no
+			}
+			while = {
+				count = 11
+				create_ship = {
+					name = random
+					design = "鬿III"
+					prefix = no
+					upgradable = no
+				}
+			}
+			while = {
+				count = 9
+				create_ship = {
+					name = random
+					design = "鬿II"
+					prefix = no
+					upgradable = no
+				}
+			}
+			assign_leader = last_created_leader
+		}
+	}
+}
+#自动检测，数值膨胀也会跟随，魔怔mod会! 卡! 爆!
+create_sk_pirate_fleet_2 = { #根据输入 FLEET_POWER 动态生成舰队
+	set_variable = {
+		which = var_fleet_power
+		value = $FLEET_POWER$
+	}	
+	if = {
+		limit = {
+			check_variable = {
+				which = var_fleet_power
+				value <= 19000
+			}
+		}
+		change_variable = { #保证不为0，之后可以向上进位
+			which = var_fleet_power
+			value = 1
+		}
+		divide_variable = {
+			which = var_fleet_power
+			value = 3000
+		}
+		ceiling_variable = var_fleet_power #至少生成一个
+		while = { #3k
+			count = var_fleet_power
+			create_ship = {
+				name = random
+				design = "NAME_Sterilizer"
+				graphical_culture = "ai_01"
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = var_fleet_power
+				value <= 45000
+				#value >= 4000
+			}
+		}
+		divide_variable = {
+			which = var_fleet_power
+			value = 19000
+		}
+		floor_variable = var_fleet_power
+		while = { #400
+			count = var_fleet_power
+			while = { #3k
+				count = 3
+				create_ship = {
+					name = random
+					design = "NAME_Sterilizer"
+					graphical_culture = "ai_01"
+				}
+			}
+			while = {#10k
+				count = 1 
+				create_ship = {
+					name = random
+					design = "NAME_Euthanizer"
+					graphical_culture = "ai_01"
+				}
+			}	
+		}	
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = var_fleet_power
+				value <= 200000
+				#value >= 9600
+			}
+		}
+		divide_variable = {
+			which = var_fleet_power
+			value = 45000
+		}
+		floor_variable = var_fleet_power
+		while = { #400
+			count = var_fleet_power
+			while = { #3k
+				count = 5
+				create_ship = {
+					name = random
+					design = "NAME_Sterilizer"
+					graphical_culture = "ai_01"
+				}
+			}
+			while = {#10k
+				count = 3 
+				create_ship = {
+					name = random
+					design = "NAME_Euthanizer"
+					graphical_culture = "ai_01"
+				}
+			}
+		}
+	}
+	else_if = { #超过300k舰队就少生成小船，卡的批爆
+		limit = {
+			check_variable = {
+				which = var_fleet_power
+				value >= 300000
+			}
+		}
+		divide_variable = {
+			which = var_fleet_power
+			value = 59000
+		}
+		floor_variable = var_fleet_power
+		while = { 
+			count = var_fleet_power
+			while = { #3k
+				count = 3
+				create_ship = {
+					name = random
+					design = "NAME_Sterilizer"
+					graphical_culture = "ai_01"
+				}
+			}
+			while = {#10k
+				count = 5 
+				create_ship = {
+					name = random
+					design = "NAME_Euthanizer"
+					graphical_culture = "ai_01"
+				}
+			}	
+		}
+	}
+}
+create_sk_pirate_fleet = { #0 40 60 80年4级实力 ### 废弃
+	set_owner = event_target:sk_pirate_band
+	if = {
+		limit = { years_passed < 30 }
+		while = {
+			count = 0
+			create_ship = {
+				name = random
+				design = "NAME_Wraith"
+				graphical_culture = "extra_dimensional_01"
+			}
+		}
+		while = {
+			count = 1
+			create_ship = {
+				name = random
+				design = "NAME_Phantom"
+				graphical_culture = "extra_dimensional_01"
+			}
+		}
+		while = {
+			count = 1
+			create_ship = {
+				name = random
+				design = "NAME_Revenant"
+				graphical_culture = "extra_dimensional_01"
+			}
+		}
+	}
+	# 30 years into game, less than 60
+	else_if = {
+		limit = {
+			years_passed < 60
+		}
+		while = {
+			count = 15
+			create_ship = {
+				name = random
+				design = "NAME_Wraith"
+				graphical_culture = "extra_dimensional_01"
+			}
+		}
+		while = {
+			count = 3
+			create_ship = {
+				name = random
+				design = "NAME_Phantom"
+				graphical_culture = "extra_dimensional_01"
+			}
+		}
+		while = {
+			count = 1
+			create_ship = {
+				name = random
+				design = "NAME_Revenant"
+				graphical_culture = "extra_dimensional_01"
+			}
+		}
+	}
+	# 60 years into game, less than 80
+	else_if = {
+		limit = {
+			years_passed < 80
+		}
+		while = {
+			count = 18
+			create_ship = {
+				name = random
+				design = "NAME_Wraith"
+				graphical_culture = "extra_dimensional_01"
+			}
+		}
+		while = {
+			count = 6
+			create_ship = {
+				name = random
+				design = "NAME_Phantom"
+				graphical_culture = "extra_dimensional_01"
+			}
+		}
+		while = {
+			count = 2
+			create_ship = {
+				name = random
+				design = "NAME_Revenant"
+				graphical_culture = "extra_dimensional_01"
+			}
+		}
+	}
+	# 80 years into game
+	else = {
+		while = {
+			count = 24
+			create_ship = {
+				name = random
+				design = "NAME_Wraith"
+				graphical_culture = "extra_dimensional_01"
+			}
+		}
+		while = {
+			count = 6
+			create_ship = {
+				name = random
+				design = "NAME_Phantom"
+				graphical_culture = "extra_dimensional_01"
+			}
+		}
+		while = {
+			count = 4
+			create_ship = {
+				name = random
+				design = "NAME_Revenant"
+				graphical_culture = "extra_dimensional_01"
+			}
+		}
+		create_ship = {
+			name = random
+			design = NAME_Constructor
+		}
+		#set_fleet_flag = marauder_raider_fleet_
+	}
+	set_location = event_target:sk_pirate_home
+	set_fleet_stance = aggressive
+	assign_leader = last_created_leader
+	set_aggro_range = 500
+	set_aggro_range_measure_from = self
+	set_fleet_bombardment_stance = sk_armageddon
+	#auto_move_to_planet = {
+	#	target = event_target:sk_target_capital
+	#	clear_auto_move_on_arrival = yes
+	#	arrival_effect = thalassocracy_patrol
+	#}				
+}
+# 一级亚空间城邦突触防御站（五级循环大概60k）
+create_sk_pirate_base_1 = {
+	create_fleet = {
+		name = "NAME_sk_Pirate_Station"
+		settings = {
+			can_upgrade = no
+			spawn_debris = no
+			can_change_leader = no
+		}
+		effect = {
+			set_owner = event_target:sk_pirate_band
+			create_ship = {
+				name = random
+				design = "魊I"
+			}
+			set_location = event_target:sk_pirate_home
+		}
+	}
+}
+create_sk_pirate_base_2 = {
+	create_fleet = {
+		name = "NAME_sk_Pirate_Station"
+		settings = {
+			can_upgrade = no
+			spawn_debris = no
+			can_change_leader = no
+		}
+		effect = {
+			set_owner = event_target:sk_pirate_band
+			create_ship = {
+				name = random
+				design = "魊II"
+			}
+			set_location = event_target:sk_pirate_home
+		}
+	}
+}
+
+#图图除玩家之外的全部普通国家。保留堕落游牧之类的
+sk_destroy_all = {
+	every_country = {
+		if = {
+			limit = { 
+				is_ai = yes
+				is_country_type = default
+				NOT = {
+					has_country_flag = sk_pftl
+				}
+			}
+			country_event = {
+				id = fallen_machine_empire.3
+			}
+		}
+		else_if = {
+			limit = {
+				is_ai = yes
+				is_country_type = default
+				has_country_flag = sk_pftl
+			}
+			country_event = {
+				id = fallen_machine_empire.3
+			}
+			this.capital_scope = {
+				change_pc = pc_barren
+			}
+		}
+	}
+}
+
+#记录pre_ftl总数 提升一半的pftl并补充
+sk_primitive_achieve_ftl = {
+	export_trigger_value_to_variable = {
+		trigger = count_country
+		parameters = {
+			limit = {
+				is_country_type = primitive
+			}
+		}
+		variable = var_pftl_country_number
+	}
+	divide_variable = {
+		which = var_pftl_country_number
+		value = 2
+	}
+	round_variable = var_pftl_country_number
+
+	if = {
+		limit = {
+			check_variable = {
+				which = var_pftl_country_number
+				value <= 4
+			}
+		}
+		while = {
+			count = 5
+			random_galaxy_planet = {
+				limit = {
+					num_pops = 0
+					has_owner = no
+				}
+				change_pc = pc_gaia
+				generate_pre_ftls_on_planet = yes
+				set_planet_flag = sk_ftl_changed_gaia
+				add_modifier = { modifier = sk_planet_modifier_temp }
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = var_pftl_country_number
+				value > 4
+				value <= 7
+			}
+		}
+		while = {
+			count = var_pftl_country_number
+			random_galaxy_planet = {
+				limit = {
+					num_pops = 0
+					has_owner = no
+				}
+				change_pc = pc_gaia
+				generate_pre_ftls_on_planet = yes
+				set_planet_flag = sk_ftl_changed_gaia
+				add_modifier = { modifier = sk_planet_modifier_temp }
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = var_pftl_country_number
+				value > 7
+			}
+		}
+		while = {
+			count = 7
+			random_galaxy_planet = {
+				limit = {
+					num_pops = 0
+					has_owner = no
+				}
+				change_pc = pc_gaia
+				generate_pre_ftls_on_planet = yes
+				set_planet_flag = sk_ftl_changed_gaia
+				add_modifier = { modifier = sk_planet_modifier_temp }
+			}
+		}
+	}
+	while = {
+		count = var_pftl_country_number
+		random_country = {
+			limit = { is_country_type = primitive }
+			if = {
+				limit = {
+					this.capital_scope = {
+						NOT = { has_planet_flag = sk_ftl_changed_gaia }
+					}
+				}
+				sk_achieve_ftl_effect = {
+					PRE_FTL = this
+				}
+			}
+			else_if = {
+				limit = { 
+					this.capital_scope = {
+						has_planet_flag = sk_ftl_changed_gaia
+					}
+				}
+				this.capital_scope = {
+					if = {
+						limit = { has_modifier = sk_planet_modifier_temp }
+						remove_modifier = sk_planet_modifier_temp
+						add_modifier = { modifier = sk_planet_modifier_temp days = 7300 }
+					}	
+				}
+				set_country_flag = sk_pftl
+				sk_achieve_ftl_effect = {
+					PRE_FTL = this
+				}
+			}
+		}
+	}
+	clear_variable = var_pftl_country_number
+}
+
+#修改了原版achieve ftl effect的scope错误（谁家好人随便用root啊）
+sk_achieve_ftl_effect = {
+	country_event = {
+		id = game_start.8
+	}
+	remove_country_flag = early_space_age
+	set_country_flag = primitives_can_into_space
+	set_country_type = default
+	change_country_flag = random
+	set_species_graphical_culture = yes
+	change_government = {
+		authority = random
+		civics = random
+	}
+	set_name = random
+	if = {
+		limit = {
+			has_country_flag = was_enlightened
+			has_origin = origin_default_pre_ftl
+		}
+		set_origin = origin_enlightened
+	}
+	if = {
+		limit = {
+			has_origin = origin_default_pre_ftl
+		}
+		set_origin = origin_default
+		if = {
+			limit = {
+				is_gestalt = no
+			}
+			capital_scope = {
+				add_modifier = {
+					modifier = prosp_uni_mod
+					days = 7200
+				}
+			}
+		}
+		else = {
+			capital_scope = {
+				add_modifier = {
+					modifier = prosp_uni_mod_gestalt
+					days = 7200
+				}
+			}
+		}
+		capital_scope = {
+			while = {
+				count = 4
+				create_pop = {
+					species = owner
+				}
+			}
+		}
+	}
+	add_resource = {
+		energy = 500
+		minerals = 500
+		alloys = 125
+		influence = 50
+		unity = 250
+		volatile_motes = 50
+		exotic_gases = 50
+		rare_crystals = 50
+		mult = trigger:years_passed
+	}
+	if = {
+		limit = {
+			is_hive_empire = no
+		}
+		add_resource = {
+			consumer_goods = 250
+			mult = trigger:years_passed
+		}
+	}
+	if = {
+		limit = {
+			is_lithoid_empire = no
+		}
+		add_resource = {
+			food = 500
+			mult = trigger:years_passed
+		}
+	}
+	else = {
+		add_resource = {
+			minerals = 500
+			mult = trigger:years_passed
+		}
+	}
+	create_fleet = {
+		effect = {
+			set_owner = prev
+			create_ship = {
+				name = random
+				random_existing_design = science
+			}
+			set_fleet_stance = evasive
+			set_location = prev.capital_scope.star
+			owner = {
+				create_leader = {
+					class = scientist
+					sub_type = survey
+					name = random
+					species = owner_main_species
+				}
+			}
+			set_leader = last_created_leader
+		}
+	}
+	if = {
+		limit = {
+			is_gestalt = yes
+		}
+		country_event = {
+			id = game_start.70
+		}
+		#Sets up gestalt council
+	}
+	else = {
+		country_event = {
+			id = game_start.72
+		}
+		#Sets up regular council
+	}
+	country_event = {
+		id = game_start.71
+	}
+	#Sets up planet governor
+	create_fleet = {
+		effect = {
+			set_owner = prev
+			create_ship = {
+				name = random
+				random_existing_design = constructor
+			}
+			set_fleet_stance = evasive
+			set_location = prev.capital_star
+		}
+	}
+	capital_scope = {
+		clear_blockers = yes
+		remove_all_buildings = yes
+		if = {
+			limit = {
+				NOT = {
+					is_planet_class = pc_habitat
+				}
+			}
+			generate_start_buildings_and_districts = yes
+		}
+		else_if = {
+			limit = {
+				is_planet_class = pc_habitat
+			}
+			owner = {
+				give_technology = {
+					tech = tech_habitat_1
+					message = no
+				}
+				add_research_option = tech_habitat_2
+				if = {
+					limit = {
+						OR = {
+							is_lithoid_empire = no
+							is_catalytic_empire = yes
+						}
+					}
+					give_technology = {
+						tech = tech_eco_simulation
+						message = no
+					}
+					give_technology = {
+						tech = tech_hydroponics
+						message = no
+					}
+				}
+				else = {
+					give_technology = {
+						tech = tech_powered_exoskeletons
+						message = no
+					}
+					give_technology = {
+						tech = tech_space_mining_1
+						message = no
+					}
+				}
+			}
+			add_building = building_hab_major_capital
+			# 2 jobs
+			if = {
+				limit = {
+					owner = {
+						is_lithoid_empire = no
+					}
+				}
+				add_building = building_hydroponics_farm
+			}
+			# 2 jobs
+			add_district = district_hab_science
+			# 2 jobs
+			if = {
+				limit = {
+					owner = {
+						is_spiritualist = no
+					}
+				}
+				add_building = building_bureaucratic_1
+			}
+			# 2 jobs
+			if = {
+				limit = {
+					owner = {
+						is_spiritualist = yes
+						OR = {
+							has_valid_civic = civic_death_cult
+							has_valid_civic = civic_death_cult_corporate
+						}
+					}
+				}
+				add_building = building_sacrificial_temple_1
+			}
+			# 2 jobs
+			if = {
+				limit = {
+					owner = {
+						is_spiritualist = yes
+						NOT = {
+							has_valid_civic = civic_death_cult
+						}
+					}
+				}
+				add_building = building_temple
+			}
+		}
+		while = {
+			limit = {
+				num_pops < 8
+				#free_housing > 0
+			}
+			create_pop = {
+				species = owner
+			}
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_desert
+			}
+			set_planet_flag = tasty_desert
+		}
+		remove_all_armies = yes
+		solar_system = {
+			save_event_target_as = enlightened_system
+			if = {
+				limit = {
+					exists = owner
+				}
+				owner = {
+					save_event_target_as = previous_system_owner
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						exists = starbase
+					}
+				}
+				create_starbase = {
+					size = starbase_starport
+					module = shipyard
+					module = shipyard
+					owner = prev
+				}
+			}
+		}
+	}
+	random_controlled_ship = {
+		limit = {
+			is_ship_size = primitive_space_station
+		}
+		fleet = {
+			destroy_fleet = THIS
+		}
+	}
+	# countries with intel on this system get a notification and establish communications
+	every_country = {
+		limit = {
+			is_country_type_with_subjects = yes
+			NOR = {
+				AND = {
+					exists = event_target:previous_system_owner
+					is_same_value = event_target:previous_system_owner
+				}
+				is_same_value = $OWNER$
+			}
+			intel_level = {
+				level > medium
+				system = event_target:enlightened_system
+			}
+		}
+		country_event = {
+			id = preftl.1111
+			days = 1
+			scopes = {
+				from = $PRE_FTL$
+			}
+		}
+	}
+	if = {
+		limit = {
+			exists = event_target:previous_system_owner
+		}
+		establish_communications_no_message = event_target:previous_system_owner
+	}
+}
+
+#resetal_all_pop
+sk_resettle_all_pop = {
+	#reroll_random = yes
+	owner = {
+		random_owned_planet = {
+			limit = {
+				num_pops > 0
+				this = {
+					NOT = { is_same_value = prevprevprev }
+				}
+			}
+			save_event_target_as = resettle_target
+		}
+	}
+	every_owned_pop = {
+		resettle_pop = {
+			pop = this
+			planet = event_target:resettle_target
+		}
+	}
+}
+create_sk_citadel = {
+	create_starbase = {
+					
+		size = "starbase_citadel"
+		module = "shipyard"
+		module = "shipyard"
+		module = "gun_battery"
+		module = "gun_battery"
+		module = "gun_battery"
+		module = "gun_battery"
+		module = "gun_battery"
+	
+		building = "target_uplink_computer"
+		building = "defense_grid"
+		building = "colossus_yards"
+		building = "titan_yards"
+		owner = root.owner
+	
+		effect = {
+			while = {
+				count = 5
+				create_ship = {
+					name = random
+					design = "魊II"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,426 @@
+utility_component_template = {
+	key = "SK_BATTLESHIP_DARK_MATTER_REACTOR"
+	size = small
+	icon = "GFX_ship_part_dark_matter_power_core"
+	icon_frame = 1
+	power = 5000
+	resources = {
+		category = ship_components
+		cost = {
+			alloys = 1200
+			sr_dark_matter = 20
+		}
+		upkeep = {
+			energy = 5
+			alloys = 1
+		}
+	}
+
+	prerequisites = { "tech_dark_matter_power_core" }
+	component_set = "power_core"
+	size_restriction = { battleship offspring_battleship }
+
+	ai_weight = {
+		weight = 20
+		modifier = {
+			factor = 0.0
+			is_ai = yes
+		}
+		modifier = {
+			factor = 0.0
+			no_resource_for_component = { RESOURCE = sr_dark_matter }
+		}
+	}
+}
+utility_component_template = {
+	key = "SK_TITAN_DARK_MATTER_REACTOR"
+	size = small
+	icon = "GFX_ship_part_dark_matter_power_core"
+	icon_frame = 1
+	power = 20000
+	resources = {
+		category = ship_components
+		cost = {
+			alloys = 6000
+			sr_dark_matter = 160
+		}
+		upkeep = {
+			energy = 60
+			alloys = 5
+		}
+	}
+
+	prerequisites = { "tech_dark_matter_power_core" }
+	component_set = "power_core"
+	size_restriction = { titan payback_warship sk_behemoth colossus}
+
+	ai_weight = {
+		weight = 20
+		modifier = {
+			factor = 0.0
+			is_ai = yes
+		}
+		modifier = {
+			factor = 0.0
+			no_resource_for_component = { RESOURCE = sr_dark_matter }
+		}
+	}
+}
+utility_component_template = {
+	key = "SK_COLD_FUSION_REACTOR"
+	size = small
+	icon = "GFX_ship_part_reactor_3"
+	icon_frame = 1
+	power = 8000
+	resources = {
+		category = ship_components
+		cost = {
+			alloys = 400
+			sr_dark_matter = 5
+			sr_zro = 5
+		}
+		upkeep = {
+			energy = 4
+			alloys = 0.3
+		}
+	}
+
+	prerequisites = { "tech_cold_fusion_power" }
+	component_set = "power_core"
+	size_restriction = { sk_warship_small sk_warship_large sk_military_station_small
+	 sk_military_station_large sk_wenkwort_enforcer }
+
+	 ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0.0
+			is_ai = yes
+		}
+		modifier = {
+			factor = 0.0
+			no_resource_for_component = { 
+				RESOURCE = sr_dark_matter 
+				RESOURCE = sr_zro
+			}
+		}
+	}
+}
+#NewWeapon##################################################################################################
+weapon_component_template = {
+	key = "SK_GG_BEAM"
+	size = titanic
+	type = instant
+	power = -500
+
+	icon = "GFX_ship_part_energy_lance_2"
+	icon_frame = 1
+
+	firing_arc = 270
+	min_range = 0
+	use_ship_kill_target = no
+
+	prerequisites = { "tech_titans" }
+	component_set = "SK_GG_BEAM"
+	projectile_gfx = "gatebuilder_titan_weapon" #gamma_laser_l
+	tags = { weapon_type_energy weapon_role_artillery t_slot }
+	size_restriction = { sk_warship_large sk_military_station_large titan ion_cannon }
+
+	ai_tags = { weapon_role_artillery artillery }
+	ai_tag_weight = 0
+	resources = {
+		category = ship_components
+		cost = {
+			alloys = 500
+			rare_crystals = 8
+		}
+		upkeep = {
+			energy = 1
+			alloys = 0.5
+		}
+	}
+	damage = {
+		min = 8000
+		max = 10000
+	}
+	windup = {
+		min = 45
+		max = 45
+	}
+	total_fire_time = 75
+	range = 240
+	accuracy = 1
+	tracking = 1
+	shield_damage = 1.67
+	shield_penetration = 0.75
+	armor_penetration = 0.75
+	armor_damage = 1.67
+	hull_damage = 2
+
+	target_weights = {
+		titan = 3
+		battleship = 2
+	}
+
+	ai_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.0
+			is_ai = yes
+		}
+		modifier = {
+			factor = 0.0
+			no_resource_for_component = { RESOURCE = rare_crystals }
+		}
+	}
+}
+weapon_component_template = {
+	key = "SK_GG_BEAM_special"
+	size = titanic
+	type = instant
+	power = -500
+
+	icon = "GFX_ship_part_energy_lance_2"
+	icon_frame = 1
+
+	firing_arc = 270
+	min_range = 0
+	use_ship_kill_target = no
+
+	prerequisites = { "tech_titans" }
+	component_set = "SK_GG_BEAM"
+	projectile_gfx = "gatebuilder_titan_weapon" #gamma_laser_l
+	tags = { weapon_type_energy weapon_role_artillery t_slot }
+	size_restriction = { sk_behemoth }
+
+	ai_tags = { weapon_role_artillery artillery }
+	ai_tag_weight = 0
+	resources = {
+		category = ship_components
+		cost = {
+			alloys = 500
+			rare_crystals = 8
+		}
+		upkeep = {
+			energy = 1
+			alloys = 0.5
+		}
+	}
+	damage = {
+		min = 800000
+		max = 1000000
+	}
+	windup = {
+		min = 150
+		max = 150
+	}
+	total_fire_time = 300
+	range = 300
+	accuracy = 1
+	tracking = 1
+	shield_damage = 2
+	shield_penetration = 0.8
+	armor_penetration = 0.8
+	armor_damage = 2
+	hull_damage = 2
+
+	target_weights = {
+		titan = 3
+		battleship = 2
+	}
+
+	ai_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.0
+			is_ai = yes
+		}
+		modifier = {
+			factor = 0.0
+			no_resource_for_component = { RESOURCE = rare_crystals }
+		}
+	}
+}
+weapon_component_template = {
+	key = "SK_ARC_EMITTER_2"
+	size = large
+	type = instant
+	power = -100
+
+	icon = "GFX_ship_part_arc_emitter_2"
+	icon_frame = 1
+
+	firing_arc = 180
+	min_range = 0
+	use_ship_kill_target = no
+
+	prerequisites = { "tech_disruptors_2" }
+	component_set = "SK_ARC_EMITTER_2"
+	projectile_gfx = "focused_arc_emitter" #gamma_laser_l
+	tags = { weapon_type_energy weapon_role_artillery l_slot }
+	ai_tags = { weapon_role_artillery artillery }
+	ai_tag_weight = 0
+	resources = {
+		category = ship_components
+		cost = {
+			alloys = 200
+			rare_crystals = 5
+		}
+		upkeep = {
+			energy = 1
+			alloys = 0.5
+		}
+	}
+	damage = {
+		min = 17.5
+		max = 17.5
+	}
+	windup = {
+		min = 1.5
+		max = 1.5
+	}
+	total_fire_time = 3.5
+	range = 200
+	accuracy = 1
+	tracking = 1
+	shield_penetration = 1
+	armor_penetration = 1
+
+	target_weights = {
+		titan = 3
+		battleship = 2
+	}
+
+	ai_weight = {
+		weight = 3	
+		modifier = {
+			factor = 0.0
+			is_ai = yes
+		}
+		modifier = {
+			factor = 0.0
+			no_resource_for_component = { RESOURCE = rare_crystals }
+		}
+	}
+}
+weapon_component_template = {
+	key = "SK_ARC_EMITTER_1"
+	size = medium
+	type = instant
+	power = -50
+
+	icon = "GFX_ship_part_arc_emitter_2"
+	icon_frame = 1
+
+	firing_arc = 360
+	min_range = 0
+	use_ship_kill_target = no
+
+	prerequisites = { "tech_disruptors_1" }
+	component_set = "SK_ARC_EMITTER_2"
+	projectile_gfx = "gamma_laser_l" #gamma_laser_l
+	tags = { weapon_type_energy weapon_role_artillery m_slot }
+	ai_tags = { weapon_role_artillery artillery }
+	ai_tag_weight = 0
+	resources = {
+		category = ship_components
+		cost = {
+			alloys = 80
+			rare_crystals = 3
+		}
+		upkeep = {
+			energy = 1
+			alloys = 0.5
+		}
+	}
+	damage = {
+		min = 4
+		max = 8
+	}
+	windup = {
+		min = 1.5
+		max = 1.5
+	}
+	total_fire_time = 2.5
+	range = 100
+	accuracy = 1
+	tracking = 1
+	shield_penetration = 1
+	armor_penetration = 1
+
+	target_weights = {
+		titan = 3
+		battleship = 2
+	}
+
+	ai_weight = {
+		weight = 3	
+		modifier = {
+			factor = 0.0
+			is_ai = yes
+		}
+		modifier = {
+			factor = 0.0
+			no_resource_for_component = { RESOURCE = rare_crystals }
+		}
+	}
+}
+weapon_component_template = {
+	key = "SK_ARC_EMITTER_0"
+	size = small
+	type = instant
+	power = -10
+
+	icon = "GFX_ship_part_arc_emitter_2"
+	icon_frame = 1
+
+	firing_arc = 180
+	min_range = 0
+	use_ship_kill_target = no
+
+#	prerequisites = { "tech_disruptors_2" }
+	component_set = "SK_ARC_EMITTER_2"
+	projectile_gfx = "gamma_laser_l" 
+	tags = { weapon_type_energy weapon_role_artillery l_slot }
+	ai_tags = { weapon_role_artillery artillery }
+	ai_tag_weight = 0
+	resources = {
+		category = ship_components
+		cost = {
+			alloys = 40
+			rare_crystals = 0
+		}
+		upkeep = {
+			energy = 1
+			alloys = 0.5
+		}
+	}
+	damage = {
+		min = 1
+		max = 2
+	}
+	windup = {
+		min = 1.5
+		max = 1.5
+	}
+	total_fire_time = 1.5
+	range = 45
+	accuracy = 1
+	tracking = 1
+	shield_penetration = 0.8
+	armor_penetration = 0.7
+	shield_damage = 1.20
+	armor_damage = 1.20
+
+	target_weights = {
+		titan = 3
+		battleship = 2
+	}
+
+	ai_weight = {
+		weight = 3	
+		modifier = {
+			factor = 0.0
+			is_ai = yes
+		}
+	}
+}

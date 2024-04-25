@@ -1,0 +1,103 @@
+sk_ultimate_country_modifier = {
+	intel_encryption_add = 10
+	intel_decryption_add = 10
+	ship_starting_experience_add = 1000
+	army_starting_experience_add = 1000
+	MEGASTRUCTURE_BUILD_SPEED_ADD = 200
+	add_base_country_intel = 5
+	ships_upkeep_mult = -5
+	starbase_shipyard_build_speed_mult = 5
+	starbase_shipyard_build_cost_mult = -5
+	starbase_shipyard_build_time_mult = -5
+	planet_jobs_minerals_produces_mult = 5
+	planet_jobs_alloys_produces_mult = 5
+	planet_jobs_productive_upkeep_mult = -5
+	planet_jobs_productive_produces_mult = 5
+	planet_jobs_energy_produces_mult = 5
+	planet_jobs_physics_research_produces_mult = 5
+	planet_jobs_society_research_produces_mult = 5
+	planet_jobs_engineering_research_produces_mult = 5
+	#ship_shield_mult = 0.3
+	#ship_fire_rate_mult = 0.3
+	#ship_armor_mult = 0.3
+	#ship_hull_mult = 0.3
+	#ship_weapon_damage = 0.3
+	ship_cloaking_strength_add = 5
+	ship_evasion_mult = 0.3
+	ship_speed_mult = 1
+	starbase_upgrade_speed_mult = 5
+	shipsize_military_station_small_build_speed_mult = 5
+	command_limit_add = 200
+	country_engineering_tech_research_speed = 5
+	country_physics_tech_research_speed = 5
+	country_society_tech_research_speed = 5
+}
+sk_planet_modifier = {
+	planet_jobs_society_research_produces_mult = 3
+	planet_jobs_engineering_research_produces_mult = 3
+	planet_jobs_physics_research_produces_mult = 3
+	planet_jobs_energy_produces_mult = 2
+	planet_jobs_minerals_produces_mult = 2
+	planet_jobs_food_produces_mult = 2
+	planet_jobs_alloys_produces_mult = 2
+	planet_jobs_consumer_goods_produces_mult = 2
+	planet_jobs_exotic_gases_produces_mult = 2
+	planet_jobs_rare_crystals_produces_mult = 2
+	planet_jobs_volatile_motes_produces_mult = 2
+	district_mining_max = 9
+	district_generator_max = 9
+	#sk_district_city_max = 9
+	planet_max_districts_add = 5
+
+	icon = "gfx/interface/icons/planet_modifiers/pm_strong_magnetic_field.dds"
+	icon_frame = 1
+}
+sk_planet_modifier_temp = {
+	planet_jobs_society_research_produces_mult = 0.40
+	planet_jobs_engineering_research_produces_mult = 0.40
+	planet_jobs_physics_research_produces_mult = 0.40
+	planet_jobs_energy_produces_mult = 0.5
+	planet_jobs_minerals_produces_mult = 0.5
+	planet_jobs_food_produces_mult = 0.5
+	planet_jobs_alloys_produces_mult = 0.5
+	planet_jobs_consumer_goods_produces_mult = 0.5
+	planet_jobs_exotic_gases_produces_mult = 0.5
+	planet_jobs_rare_crystals_produces_mult = 0.5
+	planet_jobs_volatile_motes_produces_mult = 0.5
+	district_mining_max = 6
+	district_generator_max = 6
+	#sk_district_city_max = 6
+	planet_max_districts_add = 3
+
+	icon = "gfx/interface/icons/planet_modifiers/pm_strong_magnetic_field.dds"
+	icon_frame = 1
+}
+sk_country_modifier = {
+	add_base_country_intel = 70
+	intel_encryption_add = 10
+	intel_decryption_add = 10
+	ship_cloaking_strength_add = 4
+	shipsize_military_station_small_build_speed_mult = 5
+	command_limit_add = 200
+	country_naval_cap_add = 500
+}
+sk_event_ship_modifier = {
+	ship_weapon_damage = 1
+	ship_hull_mult = 0.5
+	ship_armor_mult = 0.5
+	ship_fire_rate_mult = 0.5
+}
+sk_ship_modifier = {
+	ship_weapon_damage = 1
+	ship_hull_mult = 0.3
+	ship_armor_mult = 0.3
+	ship_fire_rate_mult = 0.3
+}
+sk_uprising = {
+	ship_hull_mult = 0.33
+	starbase_shipyard_build_speed_mult = 1.2
+	starbase_shipyard_build_cost_mult = -0.3
+	starbase_shipyard_build_time_mult = -0.3
+	command_limit_add = 100
+	country_naval_cap_mult = 3
+}

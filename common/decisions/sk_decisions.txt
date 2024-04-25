@@ -1,0 +1,43 @@
+decision_resettle_all_pop = {
+	owned_planets_only = yes
+
+	prerequisites = {
+		"tech_sk_gaia_reform"
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 10000
+			unity = 1000
+		}
+	}
+
+	potential = {
+		is_capital = no
+		owner = {
+			OR = {
+				is_country_type = default
+				#for checks in buildings and districts
+				is_country_type = awakened_marauders
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire
+			}
+		}
+		has_planet_flag = sk_changed_gaia
+	}
+
+	allow = {
+	}
+	
+	effect = {
+		custom_tooltip = decision_resettle_all_pop_effects
+		hidden_effect = {
+			sk_resettle_all_pop = yes
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
