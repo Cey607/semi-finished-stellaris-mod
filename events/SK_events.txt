@@ -260,6 +260,7 @@ country_event = {
 	desc = "sk.500.b.desc"
 	desc = "sk.500.c.desc"
 	desc = "sk.500.d.desc"
+	desc = "sk.500.f.desc"
 
 	diplomatic = yes
 	picture = GFX_evt_mysterious_signal
@@ -338,12 +339,21 @@ country_event = {
 			}
 		}
 	}
+	option = {
+		name = sk.500.f
+		response_text = sk.500.f.response
+		hidden_effect = {
+			
+			set_global_flag =  sk_pirate_false
+		} 
+			
+	}
 	option = { # 啥也没有
 		name = sk.500.e
 		default_hide_option = yes
 	}
 }
-event = {#失去舰队触发器
+event = {#失去舰队触发器 月度检查
 	id = sk.510
 	hide_window = yes
 
@@ -1256,12 +1266,15 @@ country_event = {
 	}
 	trigger = {
 		is_ai = no
-		NOT = { has_global_flag = sk_pirate_invading }
+		NOT = {
+			has_global_flag = sk_pirate_invading 
+			has_global_flag = sk_pirate_false
+		}
 		mid_game_years_passed >= 1
-		#end_game_years_passed < 0
+		#end_game_years_passed < 0 末期这玩意强度似乎不太够?换成别的模式吧
 	}
 	immediate = {
-		# 保证20个月内不会快速触发
+		# 保证20个月内不会快速触发(20个月是不是太短了?)
 		set_timed_global_flag = {
 			flag = sk_pirate_invading
 			months = 20
@@ -1304,8 +1317,8 @@ country_event = {
 				set_global_flag = sk_pirate_existed
 				create_species = {
 					name = "魊"
-					class = "Schalebot"
-					portrait = "Schale"
+					class = "Schalebot"		# 短期内差不多无了
+					portrait = "Schale"		# 这是另一个mod里的portrait,3.12之后好像portrait不能全部machine,要么等修复要么换一下
 					traits = random
 					immortal = yes
 					effect = {
