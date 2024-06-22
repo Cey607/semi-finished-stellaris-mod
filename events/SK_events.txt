@@ -1603,18 +1603,21 @@ planet_event = {
 	}
 }
 
-# on_planet_conquer
+# on_planet_attackers_win
 
-planet_event = {
+country_event = {
 	id = sk.315
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		has_planet_flag = sk_armageddon_bombared
+		fromfrom = {
+			has_planet_flag = sk_armageddon_bombared
+		}
 	}
 	# 清除登陆部队
 	immediate = {
-		from = {
+		this = {
+			save_event_target_as = sk_attacker
 			every_owned_army = {
 				limit = {
 					army_type = sk_landing_force
@@ -1625,37 +1628,39 @@ planet_event = {
 	}
 	#创建防御部队
 	after = {
-		remove_planet_flag = sk_armageddon_bombared
-		export_trigger_value_to_variable = {
-			trigger = num_pops
-			variable = var_pops
-		}
-		divide_variable = {
-			which = var_pops
-			value = 15
-		}
-		ceiling_variable = var_pops
-		this = {
+		fromfrom = {
+			remove_planet_flag = sk_armageddon_bombared
+			export_trigger_value_to_variable = {
+				trigger = num_pops
+				variable = var_pops
+			}
+			divide_variable = {
+				which = var_pops
+				value = 15
+			}
+			ceiling_variable = var_pops
+
 			#add_building = sk_building_capital
 			while = {
 				count = var_pops
 				create_army = {
-					owner = from
+					owner = event_target:sk_attacker
 					type = sk_machine_planet_guardian
 				}
 			}
-		}
-		#创建人口
-		this = {
+			
+			#创建人口
+
 			while = {
 				count = var_pops
 				create_pop = {
-					species = from.owner_main_species
+					species = event_target:sk_attacker.species
 				}
 			}
+
+			clear_variable = var_pops
+			clear_variable = sk_armageddon_army
 		}
-		clear_variable = var_pops
-		clear_variable = sk_armageddon_army
 	}
 }
 ####################################################################
