@@ -260,7 +260,6 @@ country_event = {
 	desc = "sk.500.b.desc"
 	desc = "sk.500.c.desc"
 	desc = "sk.500.d.desc"
-	desc = "sk.500.f.desc"
 
 	diplomatic = yes
 	picture = GFX_evt_mysterious_signal
@@ -365,12 +364,23 @@ event = {#失去舰队触发器 月度检查
 		event_target:sk_owner = {
 			AND = {
 				has_country_flag = sk_warship_active
-				NOT = { exists = event_target:sk_fleet }
+				event_target:sk_fleet = {
+					NOT = {
+						is_owned_by =  event_target:sk_owner
+					}
+				}
+				#NOT = { exists = event_target:sk_fleet }
 			}
 		}
 	}
 
 	immediate = {
+		if = {
+			limit = { exists = event_target:sk_fleet}
+			event_target:sk_fleet = {
+				destroy_fleet = THIS
+			}
+		}
 		event_target:sk_owner = {
 			remove_country_flag = sk_warship_active
 			set_timed_country_flag = {
