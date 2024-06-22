@@ -40,6 +40,16 @@ ship_design = {
 			slot="TITANIC_01"
 			template="SK_GG_BEAM_special"
 		}
+		component=
+		{
+			slot="TITANIC_01"
+			template="SK_GG_BEAM_special"
+		}
+		component=
+		{
+			slot="TITANIC_01"
+			template="SK_GG_BEAM_special"
+		}
 	}
 	section=
 	{

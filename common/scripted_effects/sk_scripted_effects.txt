@@ -57,7 +57,7 @@ create_sk_warship_fleet = {
 			}
 			create_ship = {
 				name = random
-				design = "鬿V"
+				design = "sk_titan"
 				prefix = no
 				upgradable = no
 			}
