@@ -1,0 +1,963 @@
+#思潮 (去掉fanatic为非极端思潮)
+#格式塔意识格式塔意识：
+effect shift_ethic = ethic_gestalt_consciousness
+#极端军国主义极端军国主义：
+effect shift_ethic = ethic_fanatic_militarist
+#极端排外主义极端排外主义：
+effect shift_ethic = ethic_fanatic_xenophobe
+#极端平等主义极端平等主义：
+effect shift_ethic = ethic_fanatic_egalitarian
+#极端唯物主义极端唯物主义：
+effect shift_ethic = ethic_fanatic_materialist
+#极端和平主义极端和平主义：
+effect shift_ethic = ethic_fanatic_pacifist
+#极端亲外主义极端亲外主义：
+effect shift_ethic = ethic_fanatic_xenophile
+#极端威权主义极端威权主义：
+effect shift_ethic = ethic_fanatic_authoritarian
+#极端唯心主义极端唯心主义：
+effect shift_ethic = ethic_fanatic_spiritualist
+#全体领袖等级10
+skills 10 	
+effect = {
+	remove_global_flag = gray_goo_crisis_set
+	remove_global_flag = active_gray_goo
+	remove_global_flag = dragon_season
+	remove_global_flag = gray_goo_empire_set 
+	set_global_flag = gray_goo_crisis_set
+	set_global_flag = active_gray_goo
+}
+
+解锁传统和飞升槽
+activate_all_traditions
+小灰异常
+add_anomaly disco_gray_cat
+research_all_technologies 1 8
+activate_ascension_perk ap_become_the_crisis  #化身天灾
+#自己写个逆天的放到static_modifiers里
+sk_country_modifier = {
+	intel_encryption_add = 10
+	intel_decryption_add = 10
+	add_base_country_intel = 5
+	ships_upkeep_mult = -2
+	starbase_shipyard_build_speed_mult = 2
+	starbase_shipyard_build_cost_mult = -2
+	starbase_shipyard_build_time_mult = -2
+	planet_jobs_minerals_produces_mult = 5
+	planet_jobs_alloys_produces_mult = 2
+	planet_jobs_productive_upkeep_mult = -5
+	planet_jobs_productive_produces_mult = 5
+	planet_jobs_energy_produces_mult = 5
+	planet_jobs_physics_research_produces_mult = 3
+	planet_jobs_society_research_produces_mult = 3
+	planet_jobs_engineering_research_produces_mult = 3
+	#ship_shield_mult = 0.3
+	#ship_fire_rate_mult = 0.3
+	#ship_armor_mult = 0.3
+	#ship_hull_mult = 0.3
+	#ship_weapon_damage = 0.3
+	ship_cloaking_strength_add = 4
+	ship_evasion_mult = 0.3
+	ship_speed_mult = 0.3
+	starbase_upgrade_speed_mult = 5
+	shipsize_military_station_small_build_speed_mult = 5
+	command_limit_add = 200
+	country_engineering_tech_research_speed = 2
+	country_physics_tech_research_speed = 2
+	country_society_tech_research_speed = 2
+}
+sk_ship_modifier = {
+	ship_weapon_damage = 2
+	ship_hull_mult = 0.3
+	ship_armor_mult = 0.3
+	ship_fire_rate_mult = 0.3
+}
+#格式:effect add_modifier = { modifier =cloud_power days = 100}
+effect add_modifier = { modifier = enigmatic_power }
+effect add_modifier = { modifier = nomad_strength }
+effect add_modifier = { modifier = ancient_warden_boost }#永恒守望
+effect add_modifier = { modifier = vluur_power }
+effect add_modifier = { modifier = uprising_ai_buff }
+effect add_modifier = { modifier = dreadnought_power }#无畏舰势力 船体,盾+400%伤害+800%
+effect add_modifier	= {	modifier = ai_strength }#备用循环 岗位矿物/能量+1000% 三研究+500% 海 军容量+100%
+effect add_modifier	= { modifier = sk_country_modifier }
+effect remove_modifier = sk_country_modifier
+#setflag country automated_dreadnought_country 0
+#clearflag country automated_dreadnought_country 0
+#system_star
+#capital_scope
+#orbit
+#####################################################################################################
+#  awakened_fallen_empire
+effect owner = {
+	set_graphical_culture = "fallen_empire_01"
+	initialize = "fallen_1"
+	set_country_type = fallen_empire
+	#set_country_flag = fallen_empire_machine
+	change_government = {
+		civics = {
+			civic = civic_machine_catalytic_processing
+			civic = civic_machine_warbots
+			civic = civic_machine_replication
+		}
+	}
+	origin = "origin_fallen_empire"
+				add_resource = {
+					minerals = 10000
+					energy = 10000
+					food = 1000
+					influence = 500
+				}
+				if = {
+					limit = { host_has_dlc = "Apocalypse" }
+					give_technology = {
+						tech = tech_colossus
+						message = no
+					}
+				}
+	# must initialize global designs here
+	add_global_ship_design = "NAME_Omega"
+	add_global_ship_design = "NAME_Alpha"
+	add_global_ship_design = "sk_Beta"
+	add_global_ship_design = "NAME_Gamma"
+	add_global_ship_design = "NAME_Theta"
+	add_global_ship_design = "NAME_Tau"
+	add_global_ship_design = "NAME_Sigma"
+	add_global_ship_design = "NAME_FE_Starbase"
+	ruler = {
+		add_skill = 10
+	}
+}
+#machine
+effect = {
+	change_government = {
+		civics = {
+			civic = civic_machine_warbots
+			civic = civic_machine_replication
+			civic = civic_machine_catalytic_processing
+		}
+	}
+}
+
+effect owner = {
+	set_graphical_culture = "fallen_empire_01"
+	initialize = "fallen_1"
+	set_country_type = fallen_empire
+	change_government = {
+		civics = {
+			#civic = civic_barbaric_despoilers
+			civic = civic_crusader_spirit
+			civic = civic_distinguished_admiralty
+		}
+	}
+	origin = "origin_fallen_empire"
+				add_resource = {
+					minerals = 10000
+					energy = 10000
+					food = 1000
+					influence = 500
+				}
+				if = {
+					limit = { host_has_dlc = "Apocalypse" }
+					give_technology = {
+						tech = tech_colossus
+						message = no
+					}
+				}
+	add_global_ship_design = "sk_Beta"
+	add_global_ship_design = "NAME_Enforcer"
+	add_global_ship_design = "NAME_Savant"
+	add_global_ship_design = "NAME_Scholar"
+	add_global_ship_design = "NAME_Sage"
+	add_global_ship_design = "NAME_Cloaker"
+	add_global_ship_design = "NAME_Librarian"
+	add_global_ship_design = "NAME_Seeker"
+	add_global_ship_design = "NAME_FE_Starbase"
+	ruler = {
+		add_skill = 10
+	}
+}
+#normal
+#get war goal
+#civic_crusader_spirit ShiZiJun
+#civic_barbaric_despoilers YeManLueDuoZhe
+effect = {
+	change_government = {
+		civics = {
+			civic = civic_barbaric_despoilers
+			civic = civic_crusader_spirit
+			civic = civic_distinguished_admiralty
+		}
+	}
+}
+#fallen empire awakening
+effect = {
+	set_country_type = awakened_fallen_empire
+	change_government = {
+		civics = {
+			civic = civic_revanchist_fervor
+			civic = civic_ancient_caches_of_technology
+		}
+	}
+	add_awakened_fallen_empire_resources = yes
+	add_awakened_fallen_empire_fleet = yes
+}
+#war <atk_num> <def_num> <war_goal>
+effect force_remove_civic = civic_awakened_machine
+effect force_add_civic = civic_machine_catalytic_processing
+effect force_add_civic = civic_machine_warbots
+effect force_add_civic = civic_machine_replication
+#normal fallen empire
+effect force_add_civic = civic_revanchist_fervor
+effect force_add_civic = civic_ancient_caches_of_technology
+##################################################################################################
+ascension_perk
+	#about ascension
+	activate_ascension_perk X
+	#战争之王	
+	activate_ascension_perk ap_lord_of_war	
+	#化身天灾	
+	activate_ascension_perk ap_become_the_crisis	
+	#水之心	
+	activate_ascension_perk ap_hydrocentric	
+	#天机工程	
+	activate_ascension_perk ap_enigmatic_engineering	
+	#强取豪夺	
+	activate_ascension_perk ap_nihilistic_acquisition	
+	#巨像计划	
+	activate_ascension_perk ap_colossus	
+	#设计进化	
+	activate_ascension_perk ap_engineered_evolution	
+	#掌控进化	
+	activate_ascension_perk ap_evolutionary_mastery	
+	#血肉苦弱	
+	activate_ascension_perk ap_the_flesh_is_weak	
+	#合成进化	
+	activate_ascension_perk ap_synthetic_evolution	
+	#心胜于物	
+	activate_ascension_perk ap_mind_over_matter	
+	#超凡入圣	
+	activate_ascension_perk ap_transcendence	
+	#星球塑形师	
+	activate_ascension_perk ap_world_shaper	
+	#星河力量投射	
+	activate_ascension_perk ap_galactic_force_projection	
+	#有机机械交互	
+	activate_ascension_perk ap_organo_machine_interfacing	
+	#星河卫士	
+	activate_ascension_perk ap_defender_of_the_galaxy	
+	#星际主权	
+	activate_ascension_perk ap_interstellar_dominion	
+	#掌握太虚	
+	activate_ascension_perk ap_grasp_the_void	
+	#戒心永存	
+	activate_ascension_perk ap_eternal_vigilance	
+	#逐鹿星河	
+	activate_ascension_perk ap_galactic_contender	
+	#科技至上	
+	activate_ascension_perk ap_technological_ascendancy	
+	#万众一心	
+	activate_ascension_perk ap_one_vision	
+	#祝圣世界	
+	activate_ascension_perk ap_consecrated_worlds	
+	#掌控自然	
+	activate_ascension_perk ap_mastery_of_nature	
+	#中央特权	
+	activate_ascension_perk ap_imperial_prerogative	
+	#高效行政	
+	activate_ascension_perk ap_executive_vigor	
+	#卓越学术	
+	activate_ascension_perk ap_transcendent_learning	
+	#共同命运	
+	activate_ascension_perk ap_shared_destiny	
+	#太空子民	
+	activate_ascension_perk ap_voidborn	
+	#建筑大师	
+	activate_ascension_perk ap_master_builders	
+	#星河奇迹	
+	activate_ascension_perk ap_galactic_wonders_utopia	
+	#星河奇迹	
+	activate_ascension_perk ap_galactic_wonders_megacorp	
+	#星河奇迹	
+	activate_ascension_perk ap_galactic_wonders_utopia_and_megacorp	
+	#合成时代	
+	activate_ascension_perk ap_synthetic_age	
+	#机械世界	
+	activate_ascension_perk ap_machine_worlds	
+	#蜂巢星球	
+	activate_ascension_perk ap_hive_worlds
+	#理想城计划
+	activate_ascension_perk ap_arcology_project	
+	#跨物种杂交
+	activate_ascension_perk ap_xeno_compatibility	
+	#寰宇贸易	
+	activate_ascension_perk ap_universal_transactions	
+	#排毒  
+	activate_ascension_perk ap_detox	
+	#考古工程师
+	activate_ascension_perk ap_archaeoengineers
+	#死灵机师
+	activate_ascension_perk ap_mechromancy
+
+
+research_technology tech_destroyers
+research_technology tech_cruisers
+research_technology tech_battleships
+research_technology tech_titans
+research_technology tech_juggernaut
+research_technology tech_colossus
+research_technology tech_mega_engineering
+research_technology tech_cloaking_psi
+research_technology tech_wormhole_stabilization
+research_technology tech_combat_computers_3
+event over.60 
+event story.107  #安抚变形虫
+#add trait to be immortal
+add_trait_species 1 trait_mechanical
+remove_trait_species 1 trait_mechanical
+#machine_unit
+
+effect = { set_global_flag = no_war_in_heaven }
+effect = { remove_global_flag = no_war_in_heaven }
+
+effect = { force_add_civic =  civic_empire_in_decline }
+effect = { force_add_civic =  civic_lethargic_leadership }
+effect = { force_remove_civic =  civic_crusader_spirit }
+effect = { force_remove_civic =  civic_distinguished_admiralty }
+
+effect = { set_country_type = default }
+#Leader
+effect create_leader = {
+	class = scientist
+	species = this
+	name = random
+	skill = 10
+	traits = {
+		trait = leader_trait_master_bureaucrat
+		trait = leader_trait_legendary_pious_ascet_3
+		trait = leader_trait_engineering_focus_3
+		trait = leader_trait_physics_focus_3
+		trait = leader_trait_society_focus_3
+		trait = leader_trait_truth_seeker
+		trait = leader_trait_maniacal_3
+		trait = leader_trait_curator
+		trait = leader_trait_scientist_mind_wipe_01
+		trait = gestalt_trait_scientist_mind_wipe_01
+		trait = leader_trait_legendary_scientific_diplomacy_3
+		trait = leader_trait_inspired_researcher
+		trait = leader_trait_brilliant_shipwright
+		trait = trait_ruler_world_shaper_3
+		trait = leader_trait_chosen
+		trait = leader_trait_composer_chosen
+		trait = leader_trait_instrument_chosen
+		trait = leader_trait_whisperers_chosen
+		trait = leader_trait_the_synth_luminary
+	}
+	effect = {
+		set_leader_flag = legendary_leader
+		set_leader_flag = immune_to_negative_traits
+	}
+}
+effect create_leader = {
+	class = governor
+	species = this
+	name = random
+	skill = 10
+	traits = {
+		trait = leader_trait_intellectual
+		trait = leader_trait_architectural_interest_2
+		trait = leader_trait_cartographer_3
+		trait = leader_trait_mining_focus_3
+		trait = leader_trait_forge_focus_3
+		trait = leader_trait_industrial_focus_3 
+		trait = leader_trait_refinement_focus_3
+		trait = leader_trait_urbanist_3
+		trait = leader_trait_pop_focused_3
+		trait = leader_trait_academic_3
+		trait = leader_trait_efficient
+		trait = leader_trait_arbiter
+		trait = leader_trait_automation_champion
+		trait = leader_trait_governor_gray
+		trait = leader_trait_legendary_ancestors_knowledge
+		trait = leader_trait_chosen
+		trait = leader_trait_instrument_chosen
+		trait = leader_trait_eater_chosen
+		trait = leader_trait_prospectorium_extractor
+		trait = leader_trait_shroud_preacher
+	}
+	effect = {
+		set_leader_flag = legendary_leader
+		set_leader_flag = immune_to_negative_traits
+	}
+}
+
+skills 10 
+
+effect remove_modifier = recently_liberated
+effect remove_modifier = sk_country_modifier
+effect remove_modifier = sk_ultimate_country_modifier
+effect add_modifier	= { modifier = sk_country_modifier }
+effect add_modifier	= { modifier = sk_ultimate_country_modifier }
+
+#create megastructure
+create_megastructure ring_world_1
+create_megastructure spy_orb_4  
+create_megastructure mega_shipyard_3
+create_megastructure mega_shipyard_ruined
+create_megastructure mega_shipyard_permanently_ruined
+create_megastructure matter_decompressor_ruined
+create_megastructure dyson_sphere_ruined
+#remove selected megastructure
+effect = { remove_megastructure = THIS } 
+
+#immortal leaders
+effect = {
+	every_owned_leader = {
+		limit = { is_immortal = no }
+		set_immortal = yes
+	}
+}
+
+add_relic r_severed_head 
+effect remove_relic = r_severed_head
+effect = { remove_modifier = relic_activation_cooldown }
+#end truce with every country  
+effect = {
+	every_country = {
+		end_truce = ROOT
+	}
+}
+effect = {
+	every_country = {
+		not = {
+			is = ai
+		}
+		add_intel = {
+			amount = 100
+			who = root
+		}
+	}
+}
+add_ship NAME_Constructor
+add_ship sk_titan
+add_ship sk_battleship
+add_ship NAME_Omega
+add_ship 魊I
+add_ship 魊II
+add_ship 鬿I
+add_ship 鬿II
+add_ship 鬿III
+add_ship 鬿IV
+add_ship 鬿V
+add_ship 魇I
+add_ship 魇II
+add_ship 魇III
+add_ship NAME_Crisis_Star_Eater
+#魑chī、魅mèi、魍wǎng、魉liǎng、鬽mèi、魁kuí、魃bá、魈xiāo、鬾jì、鬿qí、魀gà、魆xū、
+#魊yù、魋tuí、魌qī、魐gān、魒piāo、魓bì、魕jī、魖xū、魇yǎn、魘yǎn、魗chǒu、魙zhān
+effect = {
+	create_fleet = {
+		name = "鬿"
+		settings = {
+			can_upgrade = no
+			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
+			spawn_debris = no
+		}
+		effect = {
+			set_owner = root.controller
+			set_location = prev
+			while = {
+				count = 2
+				create_ship = {
+					name = random
+					design = "鬿III"
+					graphical_culture = root.controller
+				}
+			}
+			while = {
+				count = 6
+				create_ship = {
+					name = random
+					design = "鬿II"
+					graphical_culture = root.controller
+				}
+			}
+			fleet_event = {
+				id = sk.605
+				days = 45
+			}
+		}
+	}
+}
+effect = {
+	create_fleet = {
+		name = "鬿"
+		settings = {
+			can_upgrade = no
+			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
+			spawn_debris = no
+		}
+		effect = {
+			set_owner = root.controller
+			set_location = prev
+			while = {
+				count = 5
+				create_ship = {
+					name = random
+					design = "鬿III"
+					graphical_culture = root.controller
+				}
+			}
+			while = {
+				count = 0
+				create_ship = {
+					name = random
+					design = "鬿II"
+					graphical_culture = root.controller
+				}
+			}
+		}
+	}
+}
+
+effect = {
+	create_fleet = {
+		name = "鬿"
+		effect = {
+			set_owner = root.controller
+			set_location = prev
+			while = {
+				count = 0
+				create_ship = {
+					name = random
+					design = "鬿III"
+					graphical_culture = root.controller
+				}
+			}
+			while = {
+				count = 3
+				create_ship = {
+					name = random
+					design = "鬿II"
+					graphical_culture = root.controller
+				}
+			}
+		}
+	}
+}
+effect = {
+	while = {
+		count = 5
+		create_army = {
+			name = random
+			owner = root.controller
+			type = "cybrex_warform"
+		}
+	}
+}
+######################################################################
+event crisis.10 索林原虫
+event crisis.1000 破界者
+event crisis.2005 肃正协议
+event crisis.2400 赛博勒克斯 Beta降临
+event crisis.2406 赛博勒克斯 Beta离去
+#dumb things
+event sk.400
+event sk.299
+event syndaw.1020
+event sk.9999
+effect = { sk_primitive_achieve_ftl = yes }
+effect = { sk_destroy_all = yes }
+######################################################################
+effect = {
+	create_species = {
+		name = "魅"
+		class = "Schalebot"
+		portrait = "Schale"
+		traits = random
+		immortal = yes
+	}	
+	create_late_pre_ftl_empire= yes
+	setup_pre_ftl_planet = yes
+	create_country = {
+		name = "魊"
+		type = default
+		ignore_initial_colony_error = yes
+		authority = auth_democratic
+		civics = random
+		species = last_created_species
+		ethos = random
+		flag = random
+		effect = {
+			add_resource = {
+				minerals = 40000
+				energy = 40000
+				food = 40000
+				consumer_goods = 40000
+				influence = 1000
+			}
+		}
+	}
+}
+effect generate_late_pre_ftls_on_planet = yes #generate pre ftl
+effect achieve_ftl_effect = yes #ftl achieved
+#change to gaia planet
+effect set_planet_size = 30
+planet_class pc_continental
+planet_class pc_gaia 
+effect planet = {
+	#set_planet_size = 22
+	change_pc = pc_sk_gaia
+}
+effect = {
+	solar_system = {
+		create_sk_citadel = yes
+	}
+}
+effect = {
+	while = {
+		count = 15
+		add_deposit = d_energy_10
+		add_deposit = d_minerals_10
+		add_deposit = d_food_10
+		add_deposit = d_alloys_10
+		add_deposit = d_dark_matter_deposit_10
+		add_deposit = d_volatile_motes_5
+		add_deposit = d_rare_crystals_5
+		add_deposit = d_exotic_gases_5
+		add_deposit = d_nanites_deposit
+		add_deposit = d_zro_deposit_5
+		add_deposit = d_zro_deposit_5
+		add_deposit = d_sentinels_metal
+		add_deposit = d_society_10
+		add_deposit = d_physics_10
+		add_deposit = d_engineering_10
+		while = {
+			count = 2
+			add_deposit = d_vast_unity_deposit
+		}
+	}
+}
+effect = {  #for test use
+	create_fleet_from_naval_cap = 0.8
+	last_created_fleet = {
+		set_owner = root.owner
+		set_location = prev
+	}
+}
+effect = {
+	add_district_and_planet_size_if_needed_effect = {
+		district = sk_district_city
+	}
+}
+effect = {
+	while = {
+		count = 5
+		create_pop = {
+			species = owner_main_species
+		}
+	}
+}
+effect planet = { remove_modifier = sk_planet_modifier }
+effect planet = { remove_modifier = culture_shock_diplomacy }
+event fircon.6035 #remove_modifier = pre_ftl_distrustful
+effect destroy_colony = yes
+event fallen_machine_empire.3
+effect = { remove_planet = yes }
+
+effect = {
+	while = {
+		count = 4
+		random_galaxy_planet = {
+			change_pc = pc_gaia
+			generate_pre_ftls_on_planet = yes
+			set_planet_flag = sk_changed_gaia
+			add_modifier = { modifier = sk_planet_modifier_temp }
+		}
+	}
+}
+#generate living station  pc_habitat
+effect solar_system = {
+	spawn_planet = {
+		#planet_class pc_gaia
+		class = pc_habitat
+		location = prev
+		orbit_location = yes
+		orbit_angle_offset = 30
+		orbit_distance_offset = 30
+		has_ring = no
+		size = 100
+		init_effect = {
+			set_owner = root
+			set_controller = root
+			prevent_anomaly = yes
+			clear_blockers = yes
+			set_planet_entity = {
+				entity = habitat_phase_03_entity
+				graphical_culture = event_target:chosen_empire
+			}
+			add_deposit = d_dimensional_manipulation_device
+			add_modifier = {
+				modifier=paradisiacal_habitat_science
+			}
+			add_modifier = {
+				modifier=paradisiacal_habitat_mining
+			}
+			add_modifier = {
+				modifier=horror_stabilized
+			}
+			add_modifier = {
+				modifier=covenant_end_of_the_cycle
+			}
+			add_modifier = {
+				modifier=planet_stability_no_happiness_high
+			}
+			add_modifier = {
+				modifier=planet_stability_high
+			}
+			add_modifier = {
+				modifier=the_memorex
+			}
+			add_modifier = {
+				modifier=sky_dragon_trophy
+			}
+		}
+	}
+}
+#Deposits
+effect = {
+	while = {
+		count = 10
+		add_deposit = d_energy_10
+		add_deposit = d_minerals_10
+		add_deposit = d_food_10
+		add_deposit = d_alloys_10
+		#add_deposit = d_trade_value_10
+		while = {
+			count = 2
+			add_deposit = d_vast_unity_deposit
+		}
+	}
+}
+#Rare Deposits
+effect = {
+	while = {
+		count = 20
+		#add_deposit = d_energy_10
+		#add_deposit = d_minerals_10
+		#add_deposit = d_food_10
+		#add_deposit = d_alloys_10
+		add_deposit = d_dark_matter_deposit_10
+		add_deposit = d_volatile_motes_5
+		add_deposit = d_rare_crystals_5
+		add_deposit = d_exotic_gases_5
+		add_deposit = d_nanites_deposit
+		add_deposit = d_zro_deposit_5
+		add_deposit = d_zro_deposit_5
+		add_deposit = d_sentinels_metal
+		#add_deposit = d_trade_value_10
+		#while = {
+		#	count = 2
+		#	add_deposit = d_vast_unity_deposit
+		#}
+	}
+}
+研究
+effect = {
+	while = {
+		count = 10
+		add_deposit = d_engineering_10
+	}
+	while = {
+		count = 10
+		add_deposit = d_physics_10
+	}
+	while = {
+		count = 10
+		add_deposit = d_society_10
+	}
+}
+电+10
+effect = {
+	while = {
+		count = 50
+		add_deposit = d_energy_10
+	}
+}
+交易额
+effect = {
+	while = {
+		count = 20
+		add_deposit = d_trade_value_10
+	}
+}
+effect = {
+	while = {
+		count = 20
+		remove_deposit = d_trade_value_10
+	}
+}
+凝聚力
+effect = {
+	while = {
+		count = 10
+		add_deposit = d_vast_unity_deposit
+	}
+}
+矿物+10
+effect = {
+	while = {
+		count = 5
+		add_deposit = d_minerals_10
+	}
+}
+食物+10	
+effect = {
+	while = {
+		count = 5
+		add_deposit = d_food_10
+	}
+}
+合金+10
+effect = {
+	while = {
+		count = 5
+		add_deposit = d_alloys_10
+	}
+}
+暗物质矿
+effect = {
+	while = {
+		count = 5
+		add_deposit = d_dark_matter_deposit_10
+	}
+}
+易爆微粒
+effect = {
+	while = {
+		count = 5
+		add_deposit = d_volatile_motes_5
+	}
+}
+稀有水晶
+effect = {
+	while = {
+		count = 5
+		add_deposit = d_rare_crystals_5
+	}
+}
+异星天然气
+effect = {
+	while = {
+		count = 5
+		add_deposit = d_exotic_gases_5
+	}
+}
+纳米机器
+effect = {
+	while = {
+		count = 5
+		add_deposit = d_nanites_deposit
+	}
+}
+泽珞
+effect = {
+	while = {
+		count = 5
+		add_deposit = d_zro_deposit_5
+	}
+}
+活体金属矿藏
+effect = {
+	while = {
+		count = 5
+		add_deposit = d_sentinels_metal
+	}
+}
+
+培养厂+16食物				effect add_deposit = d_processing_pens
+古怪工厂 +1劳工岗位,产合金		effect add_deposit = d_odd_factory
+神秘发电机 +舒适度		effect add_deposit = d_arcane_generator
+大生命之树 +10住房			effect add_deposit = d_tree_of_life_home
+effect add_deposit=d_numas_breath #增加最大区划和发电区划
+###################################################################################
+event fallen_empires_awakening.1 X Y	#堕落觉醒
+event sk.1000
+
+#############################################################################################################
+effect = {
+	solar_system = {
+		save_event_target_as = precursor_spawn_system
+	}
+	event_target:precursor_spawn_system = {
+		spawn_system = {
+			min_distance = 10
+			max_distance = 10
+			min_orientation_angle = 90
+			max_orientation_angle = 90
+			max_jumps = 0
+			initializer = "surveillance_supercomputer_system"
+		}
+		if = {
+			limit = { last_created_system = { NOT = { has_hyperlane_to = prev } } }
+			add_hyperlane = {
+				from = this
+				to = last_created_system
+			}
+		}
+		else = {
+			add_extra_hyperlane_to_spawned_system_effect = yes
+		}
+	}
+}
+effect = {
+	no_scope = {
+		spawn_system = {
+			min_distance = 0
+			max_distance = 0
+			initializer = "surveillance_supercomputer_system"
+			hyperlane = no
+		}
+	}
+}	
+effect = {
+	no_scope = {
+		spawn_system = {
+		min_distance = 0
+		max_distance = 0
+		initializer = "cybrex_beta"
+		hyperlane = no
+		}
+	}
+}
+##########create formless system (wormhole not available) just jump in ###########
+effect = {
+	no_scope = {
+		# place system position at galactic core
+		spawn_system = {
+			min_distance >= 0
+			max_distance <= 0
+			min_orientation_angle = 0
+			max_orientation_angle = 360
+			initializer = formless_system_initializer
+			hyperlane = no
+			authorize_spawn_on_galactic_core = yes
+		}
+	}
+	solar_system = {
+		spawn_natural_wormhole = {
+			bypass_type = strange_wormhole
+			random_pos = yes
+			orbit_angle = 360
+			graphics_entity_name = strange_wormhole_entity
+			init_effect = {
+				link_wormholes = event_target:strange_wormhole_bypass
+				clear_global_event_target = strange_wormhole_bypass
+			}
+		}
+	}
+}
