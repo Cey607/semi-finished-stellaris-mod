@@ -38,7 +38,7 @@ ship_design = {
 		component=
 		{
 			slot="TITANIC_01"
-			template="GG_BEAM_STATIC"
+			template="SK_GG_BEAM_special"
 		}
 	}
 	section=
@@ -284,7 +284,7 @@ ship_design = {
 		}
 		component = {
 			slot = "TITANIC_01"
-			template = "SK_GG_BEAM"
+			template="SK_GG_BEAM_special"
 		}
 		component = {
 			slot = "LARGE_UTILITY_2"
