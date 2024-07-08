@@ -505,7 +505,7 @@ effect = {
 			set_owner = root.controller
 			set_location = prev
 			while = {
-				count = 5
+				count = 2
 				create_ship = {
 					name = random
 					design = "鬿III"
@@ -513,7 +513,7 @@ effect = {
 				}
 			}
 			while = {
-				count = 0
+				count = 6
 				create_ship = {
 					name = random
 					design = "鬿II"
@@ -643,10 +643,12 @@ effect = {
 	}
 }
 effect = {  #for test use
-	create_fleet_from_naval_cap = 0.8
-	last_created_fleet = {
-		set_owner = root.owner
-		set_location = prev
+	owner = {
+		create_fleet_from_naval_cap = 0.15
+		last_created_fleet = {
+			set_owner = root.owner
+			set_location = prev
+		}
 	}
 }
 effect = {
