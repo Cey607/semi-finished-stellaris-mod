@@ -982,14 +982,13 @@ ship_design = {
 		template = "sk_military_station_large_key"
 		slot = "mid"
 
-		component=
-		{
+		# component=
+		# {
+			# slot="TITANIC_01"
+			# template="SK_GG_BEAM_special"
+		# }
+		component = {
 			slot="TITANIC_01"
-			template="SK_GG_BEAM_special"
-		}
-		component=
-		{
-			slot="TITANIC_02"
 			template="SK_GG_BEAM_special"
 		}
 		component = {
