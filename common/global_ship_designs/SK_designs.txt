@@ -38,17 +38,17 @@ ship_design = {
 		component=
 		{
 			slot="TITANIC_01"
-			template="SK_GG_BEAM_special"
+			template="SK_GG_BEAM"
 		}
 		component=
 		{
 			slot="TITANIC_01"
-			template="SK_GG_BEAM_special"
+			template="SK_GG_BEAM"
 		}
 		component=
 		{
 			slot="TITANIC_01"
-			template="SK_GG_BEAM_special"
+			template="SK_GG_BEAM"
 		}
 	}
 	section=
@@ -726,7 +726,7 @@ ship_design = {
 		}
 		component = {
 			slot = "TITANIC_01"
-			template="SK_GG_BEAM_special"
+			template="SK_GG_BEAM"
 		}
 		component = {
 			slot = "LARGE_UTILITY_2"
@@ -985,12 +985,12 @@ ship_design = {
 		component=
 		{
 			slot="TITANIC_01"
-			template="SK_GG_BEAM"
+			template="SK_GG_BEAM_special"
 		}
 		component=
 		{
 			slot="TITANIC_02"
-			template="SK_GG_BEAM"
+			template="SK_GG_BEAM_special"
 		}
 		component = {
 			slot = "LARGE_GUN_01"

@@ -890,7 +890,7 @@ create_sk_citadel = {
 	
 		effect = {
 			while = {
-				count = 5
+				count = 4
 				create_ship = {
 					name = random
 					design = "魊II"
