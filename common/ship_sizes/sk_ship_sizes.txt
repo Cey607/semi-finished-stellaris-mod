@@ -6,17 +6,17 @@ sk_behemoth = {
 	max_speed = 8
 	acceleration = 0.2
 	rotation_speed = 0.15
-	collision_radius = @sk_titan_collision_radius
+	collision_radius = @titan_collision_radius
 	max_hitpoints = @sk_titan_hp
 	modifier = {
 		ship_evasion_add = @sk_titan_evasion
 	}
 	size_multiplier = 32
-	fleet_slot_size = 8
-	section_slots = { "bow" = { locator = "part1" } "mid" = { locator = "part2" } "stern" = { locator = "part3" } }
+	fleet_slot_size = 32
+	section_slots = { "mid" = { locator = "part1" } }
 	num_target_locators = 4
 	is_space_station = no
-	icon = ship_size_military_16
+	icon = ship_size_military_32
 	base_buildtime = @sk_titan_build_time
 	can_have_federation_design = no
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
@@ -113,7 +113,7 @@ sk_behemoth = {
 }
 sk_regular_titan = {
 	formation_priority = @titan_formation_priority
-	#entity = titan_entity
+	entity = "sk_titan_entity"
 	#graphical_culture = { "fallen_empire_01" "fallen_empire_02" "fallen_empire_03" "fallen_empire_04" "fallen_machine_empire_01" }
 	max_speed = @speed_slow
 	acceleration = 0.15
