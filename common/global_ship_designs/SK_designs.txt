@@ -1,10 +1,10 @@
 ship_design = {
-	name="sk_titan"
-	ship_size="titan"
+	name="鬿IV"
+	ship_size= sk_regular_titan
 	section=
 	{
-		template="TITAN_BOW"
-		slot="bow"
+		template="sk_regular_titan_key"
+		slot="mid"
 		component=
 		{
 			slot="LARGE_UTILITY_1"
@@ -42,22 +42,17 @@ ship_design = {
 		}
 		component=
 		{
-			slot="TITANIC_01"
+			slot="TITANIC_02"
 			template="SK_GG_BEAM"
 		}
 		component=
 		{
-			slot="TITANIC_01"
+			slot="TITANIC_03"
 			template="SK_GG_BEAM"
 		}
-	}
-	section=
-	{
-		template="TITAN_MID"
-		slot="mid"
 		component=
 		{
-			slot="LARGE_UTILITY_6"
+			slot="LARGE_UTILITY_7"
 			template="LARGE_DRAGON_ARMOR"
 		}
 		component=
@@ -77,27 +72,27 @@ ship_design = {
 		}
 		component=
 		{
-			slot="LARGE_UTILITY_3"
+			slot="LARGE_UTILITY_8"
 			template="LARGE_DRAGON_ARMOR"
 		}
 		component=
 		{
-			slot="LARGE_UTILITY_2"
+			slot="LARGE_UTILITY_9"
 			template="LARGE_DRAGON_ARMOR"
 		}
 		component=
 		{
-			slot="LARGE_UTILITY_1"
+			slot="LARGE_UTILITY_10"
 			template="LARGE_DRAGON_ARMOR"
 		}
 		component=
 		{
-			slot="LARGE_UTILITY_4"
+			slot="LARGE_UTILITY_11"
 			template="LARGE_DRAGON_ARMOR"
 		}
 		component=
 		{
-			slot="LARGE_UTILITY_5"
+			slot="LARGE_UTILITY_12"
 			template="LARGE_DRAGON_ARMOR"
 		}
 		component=
@@ -105,11 +100,6 @@ ship_design = {
 			slot="LARGE_GUN_03"
 			template="SK_ARC_EMITTER_2"
 		}
-	}
-	section=
-	{
-		template="TITAN_STERN"
-		slot="stern"
 		component=
 		{
 			slot="AUX_UTILITY_1"
@@ -134,6 +124,18 @@ ship_design = {
 		{
 			slot="LARGE_GUN_02"
 			template="SK_ARC_EMITTER_2"
+		}
+		component = {
+			slot = "PD_01"
+			template = "ARCHAEO_POINTDEFENCE"
+		}
+		component = {
+			slot = "PD_02"
+			template = "ARCHAEO_POINTDEFENCE"
+		}
+		component = {
+			slot = "PD_03"
+			template = "ARCHAEO_POINTDEFENCE"
 		}
 	}
 	required_component="TITAN_ZERO_POINT_REACTOR"
@@ -250,173 +252,12 @@ ship_design = {
 
 }
 ship_design = {
-	name="鬿IV"
-	ship_size="battleship"
-	section=
-	{
-		template="SK_BATTLESHIP_BOW"
-		slot="bow"
-		
-		component=
-		{
-			slot="EXTRA_LARGE_1"
-			template="ARC_EMITTER_2"
-		}
-		component=
-		{
-			slot="EXTRA_LARGE_2"
-			template="ARC_EMITTER_2"
-		}
-		component=
-		{
-			slot="EXTRA_LARGE_3"
-			template="ARC_EMITTER_2"
-		}
-		component=
-		{
-			slot="EXTRA_LARGE_4"
-			template="ARC_EMITTER_2"
-		}
-		component=
-		{
-			slot="EXTRA_LARGE_5"
-			template="ARC_EMITTER_2"
-		}
-		component=
-		{
-			slot="LARGE_UTILITY_1"
-			template="LARGE_DRAGON_ARMOR"
-		}
-		component=
-		{
-			slot="LARGE_UTILITY_2"
-			template="LARGE_DRAGON_ARMOR"
-		}
-		component=
-		{
-			slot="LARGE_UTILITY_3"
-			template="LARGE_DRAGON_ARMOR"
-		}
-		component=
-		{
-			slot="LARGE_UTILITY_4"
-			template="LARGE_DRAGON_ARMOR"
-		}
-		component=
-		{
-			slot="LARGE_UTILITY_5"
-			template="LARGE_DRAGON_ARMOR"
-		}
-		component=
-		{
-			slot="LARGE_UTILITY_6"
-			template="LARGE_PSI_SHIELD"
-		}
-		component=
-		{
-			slot="LARGE_UTILITY_7"
-			template="LARGE_PSI_SHIELD"
-		}
-		component=
-		{
-			slot="LARGE_UTILITY_8"
-			template="LARGE_PSI_SHIELD"
-		}
-		component=
-		{
-			slot="LARGE_UTILITY_9"
-			template="LARGE_PSI_SHIELD"
-		}
-		component=
-		{
-			slot="LARGE_UTILITY_10"
-			template="LARGE_PSI_SHIELD"
-		}
-	}
-	section=
-	{
-		template="BATTLESHIP_MID_S4LHB"
-		slot="mid"
-		component=
-		{
-			slot="SMALL_GUN_01"
-			template="SK_ARC_EMITTER_0"
-		}
-		component=
-		{
-			slot="SMALL_GUN_02"
-			template="SK_ARC_EMITTER_0"
-		}
-		component=
-		{
-			slot="STRIKE_CRAFT_01"
-			template="STRIKE_CRAFT_SKRAND"
-		}
-		component=
-		{
-			slot="STRIKE_CRAFT_02"
-			template="STRIKE_CRAFT_SKRAND"
-		}
-		component=
-		{
-			slot="SMALL_GUN_04"
-			template="ARCHAEO_POINTDEFENCE"
-		}
-		component=
-		{
-			slot="SMALL_GUN_03"
-			template="ARCHAEO_POINTDEFENCE"
-		}
-		component=
-		{
-			slot="LARGE_UTILITY_1"
-			template="LARGE_DRAGON_ARMOR"
-		}
-		component=
-		{
-			slot="LARGE_UTILITY_3"
-			template="LARGE_DRAGON_ARMOR"
-		}
-		component=
-		{
-			slot="LARGE_UTILITY_2"
-			template="LARGE_PSI_SHIELD"
-		}
-	}
-	section=
-	{
-		template="BATTLESHIP_STERN_L1"
-		slot="stern"
-		component=
-		{
-			slot="LARGE_GUN_01"
-			template="SK_ARC_EMITTER_2"
-		}
-		component=
-		{
-			slot="AUX_UTILITY_1"
-			template="SHIELD_HARDENER_2"
-		}
-		component=
-		{
-			slot="AUX_UTILITY_2"
-			template="AUTO_REPAIR_2"
-		}
-	}
-	required_component="SK_BATTLESHIP_DARK_MATTER_REACTOR"
-	required_component="PSI_JUMP_DRIVE_1"
-	required_component="BATTLESHIP_SHIP_THRUSTER_4"
-	required_component="SENSOR_4"
-	required_component="COMBAT_COMPUTER_ARTILLERY_AUTONOMOUS"
-	upgrade_ship_components=yes
-}
-ship_design = {
 	name="鬿V"
 	ship_size="sk_behemoth"
 	section=
 	{
-		template="SK_TITAN_BOW"
-		slot="bow"
+		template="sk_titan_key"
+		slot="mid"
 		component=
 		{
 			slot="LARGE_UTILITY_1"
@@ -532,11 +373,6 @@ ship_design = {
 			slot="TITANIC_03"
 			template="SK_GG_BEAM_special"
 		}
-	}
-	section=
-	{
-		template="SK_TITAN_MID"
-		slot="mid"
 		component = {
 			slot = "PD_01"
 			template = "ARCHAEO_POINTDEFENCE"
@@ -609,43 +445,31 @@ ship_design = {
 			slot = "LARGE_UTILITY_8"
 			template = "LARGE_PSI_SHIELD"
 		}
-	}
-	section=
-	{
-		template="SK_TITAN_STERN"
-		slot="stern"
-		component=
-		{
+		component = {
 			slot="AUX_UTILITY_1"
 			template="SHIELD_BOOSTER"
 		}
-		component=
-		{
+		component ={
 			slot="LARGE_GUN_01"
 			template="SK_ARC_EMITTER_2"
 		}
-		component=
-		{
+		component = {
 			slot="AUX_UTILITY_3"
 			template="ENIGMATIC_DECODER"
 		}
-		component=
-		{
+		component = {
 			slot="AUX_UTILITY_4"
 			template="SHIELD_BOOSTER"
 		}
-		component=
-		{
+		component = {
 			slot="AUX_UTILITY_5"
 			template="SHIELD_BOOSTER"
 		}
-		component=
-		{
+		component = {
 			slot="AUX_UTILITY_2"
 			template="ENIGMATIC_DECODER"
 		}
-		component=
-		{
+		component = {
 			slot="LARGE_GUN_02"
 			template="SK_ARC_EMITTER_2"
 		}
