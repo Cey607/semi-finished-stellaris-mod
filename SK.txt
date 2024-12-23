@@ -28,6 +28,39 @@ effect = {
 	set_global_flag = active_gray_goo
 }
 
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set power_core for design Temp 创世方舟
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components for design Temp 创世方舟
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set power_core for design Temp 纳米虫群
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set combat_computers for design Temp 纳米虫群
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components for design Temp 纳米虫群
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components_bio for design Temp 小型蓝水晶碎片
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components_bio for design Temp 蓝水晶碎片
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components_bio for design Temp 蓝水晶精髓
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components_bio for design Temp 太空变形虫
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components_bio for design Temp 太空变形虫母
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components_bio for design Temp 雌性太空巨鲸
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components_bio for design Temp 雄性太空巨鲸
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components_bio for design Temp 太空巨鲸幼体
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components_bio for design Temp 太空巨鲸幼崽
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set power_core for design Temp 密语护航舰
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components for design Temp 密语护航舰
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set combat_computers for design Temp 密语护航舰
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set power_core for design Temp 神秘战巡舰
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components for design Temp 神秘战巡舰
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set combat_computers for design Temp 神秘战巡舰
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set power_core for design Temp 悖论泰坦舰
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components for design Temp 悖论泰坦舰
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set combat_computers for design Temp 悖论泰坦舰
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components_bio for design Temp 虚空虫蛹
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components_bio for design Temp 虚空幼虫
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components_bio for design Temp 虚空成虫
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components_bio for design Temp 虚空三头虫
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components_bio for design Temp 岩居兽幼体
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components_bio for design Temp 青年岩居兽
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components_bio for design Temp 岩居兽
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set power_core for design Temp 巨兽
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set thruster_components for design Temp 巨兽
+#	[13:28:55][component.cpp:484]: Country 利希纳联盟 cannot build any component in the component set combat_computers for design Temp 巨兽
 解锁传统和飞升槽
 activate_all_traditions
 小灰异常

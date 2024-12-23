@@ -52,7 +52,8 @@ utility_component_template = {
 
 	prerequisites = { "tech_dark_matter_power_core" }
 	component_set = "power_core"
-	size_restriction = { titan payback_warship sk_behemoth colossus}
+	size_restriction = { titan payback_warship cosmo_crisis_battlecruiser sk_behemoth}
+	upgrades_to = "TITAN_FUSION_REACTOR"
 
 	ai_weight = {
 		weight = 20
@@ -66,6 +67,7 @@ utility_component_template = {
 		}
 	}
 }
+
 utility_component_template = {
 	key = "SK_COLD_FUSION_REACTOR"
 	size = small
