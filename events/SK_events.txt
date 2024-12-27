@@ -1674,26 +1674,25 @@ event = {
 	is_triggered_only = yes
 
 	trigger = {
+		NOT = {
+			has_global_flag = sk_gaia_chosen
+		}
 		any_country = {
 			is_ai = no
 			has_technology = tech_sk_gaia_reform
-			NOT = {
-				has_global_flag = sk_gaia_chosen
-			}
 		}
 	}
 
 	immediate = {
+		set_global_flag = sk_gaia_chosen
 		every_country = {
 			limit = {
 				is_ai = no
 				has_technology = tech_sk_gaia_reform
-				NOT = {
-					has_global_flag = sk_gaia_chosen
-				}
 			}
+			set_country_flag = first_sk_gaia
 			country_event = {
-				id = sk.398 days = 730
+				id = sk.398 days = 1825
 			}
 		}
 	}
@@ -1706,19 +1705,8 @@ country_event = {
 	picture = GFX_evt_ship_in_orbit_3
 
 	is_triggered_only = yes
-
-	trigger = {
-		any_country = {
-			is_ai = no
-			has_technology = tech_sk_gaia_reform
-			NOT = {
-				has_global_flag = sk_gaia_chosen
-			}
-		}
-	}
 	
 	immediate = {
-		set_global_flag = sk_gaia_chosen
 		random_system_within_border = {
 			random_system_planet = {
 				limit = {
@@ -1767,22 +1755,22 @@ planet_event = {
 			save_event_target_as = sk_changed_gaia
 			solar_system.owner = {
 				country_event = {
-					id = sk.405 days = 7100
+					id = sk.405 days = 10585
 				} 
 				country_event = {
-					id = sk.410 days = 7300
+					id = sk.410 days = 10950
 				}
 				country_event = {
 					id = sk.399 days = 1
 				}
 			} 
 			planet_event = {
-				id = sk.415 days = 7300
+				id = sk.415 days = 10950
 			}
 			change_pc = pc_gaia
 			add_modifier = {
 				modifier = sk_planet_modifier_temp
-				days = 7300
+				days = 10950
 			}
 			while = {
 				count = 15

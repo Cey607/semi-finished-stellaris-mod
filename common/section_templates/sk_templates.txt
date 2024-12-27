@@ -630,18 +630,6 @@ ship_section_template = {
 		locatorname = "medium_gun_02"
 	}
 	component_slot = {
-		name = "STRIKE_CRAFT_03"
-		template = "large_strike_craft"
-		rotation = 90
-		locatorname = "medium_gun_01"
-	}
-	component_slot = {
-		name = "STRIKE_CRAFT_04"
-		template = "large_strike_craft"
-		rotation = 90
-		locatorname = "medium_gun_02"
-	}
-	component_slot = {
 		name = "LARGE_GUN_01"
 		template = "large_turret"
 		locatorname = "large_gun_02"
@@ -653,17 +641,26 @@ ship_section_template = {
 		locatorname = "large_gun_02"
 		is_side_slot = yes
 	}
-	#component_slot = {
-	#	name = "MEDIUM_GUN_01"
-	#	template = "medium_turret"
-	#	locatorname = "large_gun_02"
-	#}
-	#component_slot = {
-	#	name = "MEDIUM_GUN_02"
-	#	template = "medium_turret"
-	#	locatorname = "large_gun_02"
-	#}
-
+	component_slot = {
+		name = "MEDIUM_GUN_01"
+		template = "medium_turret"
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_02"
+		template = "medium_turret"
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_03"
+		template = "medium_turret"
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_04"
+		template = "medium_turret"
+		locatorname = "large_gun_02"
+	}
 	large_utility_slots = 8
 	aux_utility_slots = 2
 }
