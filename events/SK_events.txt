@@ -1314,7 +1314,7 @@ country_event = {
 			#舰队实力的比例
 			multiply_variable = { 
 				which = var_fleet_power
-				value = 0.5
+				value = 0.3
 			}
 			ceiling_variable = var_fleet_power
 			# 第一次触发时创建国家并全部宣战

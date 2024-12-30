@@ -103,7 +103,7 @@ ship_design = {
 		component=
 		{
 			slot="AUX_UTILITY_1"
-			template="AUTO_REPAIR_2"
+			template="AUTO_REPAIR_3"
 		}
 		component=
 		{
@@ -118,7 +118,7 @@ ship_design = {
 		component=
 		{
 			slot="AUX_UTILITY_2"
-			template="ENIGMATIC_DECODER"
+			template="SHIELD_HARDENER_2"
 		}
 		component=
 		{
@@ -144,6 +144,9 @@ ship_design = {
 	required_component="SENSOR_4"
 	required_component="COMBAT_COMPUTER_ARTILLERY_AUTONOMOUS"
 	required_component="SHIP_AURA_QUANTUM_DESTABILIZER"
+
+	is_special_buildable = yes
+	allow_buildable_trigger = is_player
 }
 ship_design = {
 	name="sk_battleship"
@@ -240,7 +243,7 @@ ship_design = {
 		component=
 		{
 			slot="AUX_UTILITY_2"
-			template="AUTO_REPAIR_2"
+			template="AUTO_REPAIR_3"
 		}
 	}
 	required_component="BATTLESHIP_ZERO_POINT_REACTOR"
@@ -464,7 +467,7 @@ ship_design = {
 		}
 		component = {
 			slot="AUX_UTILITY_2"
-			template="ENIGMATIC_DECODER"
+			template="SHIELD_HARDENER_2"
 		}
 		component = {
 			slot="LARGE_GUN_02"
@@ -509,14 +512,14 @@ ship_design = {
 		template = "sk_warship_large_key"
 		slot = "mid"
 
-		component = {
-			slot = "STRIKE_CRAFT_01"
-			template = "STRIKE_CRAFT_SKRAND"
-		}
-		component = {
-			slot = "STRIKE_CRAFT_02"
-			template = "STRIKE_CRAFT_SKRAND"
-		}
+		#component = {
+		#	slot = "STRIKE_CRAFT_01"
+		#	template = "STRIKE_CRAFT_SKRAND"
+		#}
+		#component = {
+		#	slot = "STRIKE_CRAFT_02"
+		#	template = "STRIKE_CRAFT_SKRAND"
+		#}
 		component = {
 			slot = "LARGE_GUN_01"
 			template = "SK_ARC_EMITTER_2"
@@ -530,24 +533,24 @@ ship_design = {
 			template = "SK_ARC_EMITTER_1"
 		}
 		component = {
+			slot = "TITANIC_01"
+			template="SK_GG_BEAM"
+		}
+		component = {
 			slot = "MEDIUM_GUN_02"
 			template = "SK_ARC_EMITTER_1"
 		}
 		component = {
 			slot = "MEDIUM_GUN_03"
-			template = "STRIKE_CRAFT_SKRAND"
+			template = "SK_ARC_EMITTER_1"
 		}
 		component = {
 			slot = "MEDIUM_GUN_04"
-			template = "STRIKE_CRAFT_SKRAND"
+			template = "SK_ARC_EMITTER_1"
 		}
 		component = {
 			slot = "LARGE_UTILITY_1"
 			template = "LARGE_PSI_SHIELD"
-		}
-		component = {
-			slot = "TITANIC_01"
-			template="SK_GG_BEAM"
 		}
 		component = {
 			slot = "LARGE_UTILITY_2"
@@ -583,7 +586,11 @@ ship_design = {
 		}
 		component = {
 			slot = "AUX_UTILITY_2"
-			template = "AUTO_REPAIR_2"
+			template = "AUTO_REPAIR_3"
+		}
+		component = {
+			slot = "AUX_UTILITY_3"
+			template = "SHIELD_HARDENER_2"
 		}
 	}
 	required_component="SENSOR_4"
@@ -593,7 +600,8 @@ ship_design = {
 	required_component="BATTLESHIP_SHIP_THRUSTER_5"
 
 	# For special buildable
-
+	is_special_buildable = yes
+	allow_buildable_trigger = is_player
 }
 ship_design = {
 	name = "鬿II"
@@ -607,21 +615,25 @@ ship_design = {
 			template = "SK_ARC_EMITTER_2"
 		}
 		component = {
+			slot = "LARGE_GUN_02"
+			template = "SK_ARC_EMITTER_2"
+		}
+		component = {
 			slot = "MEDIUM_GUN_01"
 			template = "SK_ARC_EMITTER_1"
 		}
-		#component = {
-		#	slot = "MEDIUM_GUN_02"
-		#	template = "SK_ARC_EMITTER_1"
-		#}
+		component = {
+			slot = "MEDIUM_GUN_02"
+			template = "SK_ARC_EMITTER_1"
+		}
 		component = {
 			slot = "SMALL_GUN_01"
 			template = "SK_ARC_EMITTER_0"
 		}
-		#component = {
-		#	slot = "SMALL_GUN_02"
-		#	template = "SK_ARC_EMITTER_0"
-		#}
+		component = {
+			slot = "SMALL_GUN_02"
+			template = "SK_ARC_EMITTER_0"
+		}
 		component = {
 			slot = "PD_01"
 			template = "ARCHAEO_POINTDEFENCE"
@@ -680,7 +692,7 @@ ship_design = {
 		}
 		component = {
 			slot = "AUX_UTILITY_2"
-			template = "AUTO_REPAIR_2"
+			template = "AUTO_REPAIR_3"
 		}
 	}
 	required_component="SENSOR_4"
@@ -689,6 +701,8 @@ ship_design = {
 	required_component="DESTROYER_DARK_MATTER_REACTOR"
 	required_component="DESTROYER_SHIP_THRUSTER_5"
 
+	is_special_buildable = yes
+	allow_buildable_trigger = is_player
 
 }
 ship_design = {
@@ -784,7 +798,7 @@ ship_design = {
 		}
 		component = {
 			slot = "AUX_UTILITY_1"
-			template = "AUTO_REPAIR_2"
+			template = "AUTO_REPAIR_3"
 		}
 		component = {
 			slot = "AUX_UTILITY_2"
@@ -795,6 +809,8 @@ ship_design = {
 	required_component="COMBAT_COMPUTER_PLATFORM_SAPIENT"
 	required_component="PLATFORM_DARK_MATTER_REACTOR"
 
+	is_special_buildable = yes
+	allow_buildable_trigger = is_player
 }
 ship_design = {
 	name = "魊II"
@@ -974,11 +990,11 @@ ship_design = {
 		}
 		component = {
 			slot = "AUX_UTILITY_2"
-			template = "AUTO_REPAIR_2"
+			template = "AUTO_REPAIR_3"
 		}
 		component = {
 			slot = "AUX_UTILITY_3"
-			template = "SHIELD_BOOSTER"
+			template = "SHIELD_HARDENER_2"
 		}
 		component = {
 			slot = "AUX_UTILITY_4"
@@ -987,6 +1003,9 @@ ship_design = {
 	}
 	required_component = "SENSOR_4"
 	required_component = "BATTLESHIP_ZERO_POINT_REACTOR"
+
+	is_special_buildable = yes
+	allow_buildable_trigger = is_player
 }
 ship_design = {
 	name = "魇I"
@@ -1141,11 +1160,11 @@ ship_design = {
 		}
 		component = {
 			slot = "AUX_UTILITY_2"
-			template = "AUTO_REPAIR_2"
+			template = "AUTO_REPAIR_3"
 		}
 		component = {
 			slot = "AUX_UTILITY_3"
-			template = "SHIELD_BOOSTER"
+			template = "SHIELD_HARDENER_2"
 		}
 		component = {
 			slot = "AUX_UTILITY_4"
@@ -1158,6 +1177,9 @@ ship_design = {
 	required_component="JUMP_DRIVE_1"
 	required_component="COLOSSUS_DARK_MATTER_REACTOR"
 	required_component="COLOSSUS_SHIP_THRUSTER_5"
+
+	is_special_buildable = yes
+	allow_buildable_trigger = is_player
 
 }
 ship_design = {
@@ -1313,7 +1335,7 @@ ship_design = {
 		}
 		component = {
 			slot = "AUX_UTILITY_2"
-			template = "AUTO_REPAIR_2"
+			template = "AUTO_REPAIR_3"
 		}
 		component = {
 			slot = "AUX_UTILITY_3"
@@ -1321,7 +1343,7 @@ ship_design = {
 		}
 		component = {
 			slot = "AUX_UTILITY_4"
-			template = "SHIELD_BOOSTER"
+			template = "SHIELD_HARDENER_2"
 		}
 	}
 
@@ -1330,6 +1352,9 @@ ship_design = {
 	required_component="JUMP_DRIVE_1"
 	required_component="COLOSSUS_DARK_MATTER_REACTOR"
 	required_component="COLOSSUS_SHIP_THRUSTER_5"
+
+	is_special_buildable = yes
+	allow_buildable_trigger = is_player
 
 }
 ship_design = {
@@ -1485,7 +1510,7 @@ ship_design = {
 		}
 		component = {
 			slot = "AUX_UTILITY_2"
-			template = "AUTO_REPAIR_2"
+			template = "AUTO_REPAIR_3"
 		}
 		component = {
 			slot = "AUX_UTILITY_3"
@@ -1493,7 +1518,7 @@ ship_design = {
 		}
 		component = {
 			slot = "AUX_UTILITY_4"
-			template = "SHIELD_BOOSTER"
+			template = "SHIELD_HARDENER_2"
 		}
 	}
 
@@ -1503,6 +1528,8 @@ ship_design = {
 	required_component="COLOSSUS_DARK_MATTER_REACTOR"
 	required_component="COLOSSUS_SHIP_THRUSTER_5"
 
+	is_special_buildable = yes
+	allow_buildable_trigger = is_player
 }
 ship_design = {
 	name = "鬿I"
@@ -1515,16 +1542,16 @@ ship_design = {
 			slot = "LARGE_GUN_01"
 			template = "SK_ARC_EMITTER_2"
 		}
-		#component = {
-		#	slot = "MEDIUM_GUN_01"
-		#	template = "SK_ARC_EMITTER_1"
-		#}
+		component = {
+			slot = "MEDIUM_GUN_01"
+			template = "SK_ARC_EMITTER_1"
+		}
 		#component = {
 		#	slot = "MEDIUM_GUN_02"
 		#	template = "SK_ARC_EMITTER_1"
 		#}
 		component = {
-			slot = "SMALL_GUN_01"
+			slot = "SMALL_GUN_0"
 			template = "SK_ARC_EMITTER_0"
 		}
 		#component = {
@@ -1573,7 +1600,7 @@ ship_design = {
 		}
 		component = {
 			slot = "AUX_UTILITY_2"
-			template = "AUTO_REPAIR_2"
+			template = "AUTO_REPAIR_3"
 		}
 	}
 	required_component="SENSOR_4"
@@ -1582,4 +1609,60 @@ ship_design = {
 	required_component="CORVETTE_DARK_MATTER_REACTOR"
 	required_component="SHIP_THRUSTER_5"
 
+	is_special_buildable = yes
+	allow_buildable_trigger = is_player
+
+}
+ship_design = {
+	name = "sk_FE_Starbase"
+	ship_size = sk_starbase_fe_outpost
+	section = {
+		template = "station_generic_01_key"
+		slot = "mid"
+
+		component = {
+			slot = "LARGE_GUN_01"
+			template = "SK_ARC_EMITTER_2"
+		}
+		component = {
+			slot = "LARGE_GUN_02"
+			template = "SK_ARC_EMITTER_1"
+		}
+		component = {
+			slot = "MEDIUM_GUN_01"
+			template = "SK_ARC_EMITTER_1"
+		}
+		component = {
+			slot = "MEDIUM_GUN_02"
+			template = "SK_ARC_EMITTER_2"
+		}
+		component = {
+			slot = "SMALL_GUN_01"
+			template = "SK_ARC_EMITTER_0"
+		}
+		component = {
+			slot = "SMALL_GUN_02"
+			template = "SK_ARC_EMITTER_0"
+		}
+		component = {
+			slot = "SMALL_GUN_03"
+			template = "SK_ARC_EMITTER_0"
+		}
+		component = {
+			slot = "SMALL_GUN_04"
+			template = "SK_ARC_EMITTER_0"
+		}
+		component = {
+			slot="STRIKE_CRAFT_01"
+			template="STRIKE_CRAFT_SKRAND"
+		}
+		component = {
+			slot="STRIKE_CRAFT_02"
+			template="STRIKE_CRAFT_SKRAND"
+		}
+	}
+	required_component="SENSOR_4"
+
+	is_special_buildable = yes
+	allow_buildable_trigger = is_player
 }

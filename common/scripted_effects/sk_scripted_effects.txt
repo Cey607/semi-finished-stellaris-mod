@@ -57,12 +57,12 @@ create_sk_warship_fleet = {
 			}
 			create_ship = {
 				name = random
-				design = "sk_titan"
+				design = "鬿IV"
 				prefix = no
 				upgradable = no
 			}
 			while = {
-				count = 11
+				count = 20
 				create_ship = {
 					name = random
 					design = "鬿III"
@@ -70,14 +70,18 @@ create_sk_warship_fleet = {
 					upgradable = no
 				}
 			}
-			while = {
-				count = 9
-				create_ship = {
-					name = random
-					design = "鬿II"
-					prefix = no
-					upgradable = no
-				}
+			# while = {
+			# 	count = 9
+			# 	create_ship = {
+			# 		name = random
+			# 		design = "鬿II"
+			# 		prefix = no
+			# 		upgradable = no
+			# 	}
+			# }
+			add_modifier = {
+				modifier = ship_rank_elite
+				days = -1
 			}
 			assign_leader = last_created_leader
 		}
@@ -897,5 +901,641 @@ create_sk_citadel = {
 				}
 			}
 		}
+	}
+}
+spawn_sk_fleet = {
+	root.controller = {
+		create_leader = {
+			class = commander
+			species = root.owner_main_species
+			name = RANDOM
+			event_leader = yes
+			skill = 10
+			set_age = 0
+			traits = {
+				trait = leader_trait_artillery_specialization_3
+				trait = leader_trait_master_gunner
+				trait = leader_trait_commanding_presence_3
+				trait = leader_trait_artillerist_3
+				trait = leader_trait_eater_chosen
+			}
+		}
+	}
+	create_fleet = {
+		name = "鬿"
+		settings = {
+			uses_naval_capacity = no
+			spawn_debris = no
+			can_upgrade = no
+			can_change_composition = no
+			can_change_leader = no
+		}
+		effect = {
+			set_owner = root.controller
+			set_location = prev
+			create_ship = {
+				name = random
+				design = "鬿IV"
+				upgradable = no
+			}
+			while = {
+				count = 20
+				create_ship = {
+					name = random
+					design = "鬿III"
+					upgradable = no
+				}
+			}
+			add_modifier = {
+				modifier = ship_rank_elite
+				days = -1
+			}
+			assign_leader = last_created_leader
+		}
+	}
+}
+make_sk_citadel = {
+	starbase = {
+		set_starbase_size = starbase_citadel
+		set_starbase_module = { slot = 1 module = shipyard }
+		set_starbase_module = { slot = 2 module = shipyard }
+		set_starbase_module = { slot = 3 module = gun_battery }
+		set_starbase_module = { slot = 4 module = gun_battery }
+		set_starbase_module = { slot = 5 module = gun_battery }
+		set_starbase_module = { slot = 6 module = gun_battery }
+		
+		set_starbase_building = { slot = 1 building = target_uplink_computer }
+		set_starbase_building = { slot = 2 building = defense_grid }
+		set_starbase_building = { slot = 3 building = colossus_yards }
+		set_starbase_building = { slot = 4 building = titan_yards }
+
+		while = {
+			count = 4
+			create_ship = {
+				name = random
+				design = "魊II"
+			}
+		}
+	}
+}
+#魔改堕落转化#####################################################################################################
+load_presets = {
+	if = { 
+		not = { has_modifier = fe_ship_cost_modifier } 
+		add_modifier = {
+			modifier = fe_ship_cost_modifier
+			days = -1
+		}
+	}
+	ruler = {
+		add_skill = 9
+	}
+	add_awakened_fallen_empire_resources = yes
+	add_global_ship_design = "魊II"
+	add_global_ship_design = "魊I"
+	add_global_ship_design = "鬿I"
+	add_global_ship_design = "鬿II"
+	add_global_ship_design = "鬿III"
+	add_global_ship_design = "鬿IV"
+	add_global_ship_design = "魇III"
+
+	root.capital_scope = {
+		if = {
+			limit = {
+				NOT = { has_planet_flag = all_resources_added }
+			}
+			add_all_resources_to_colony = yes
+		}
+		solar_system = {
+			starbase = {
+				make_sk_citadel = yes
+			}
+		}
+	}
+}
+make_sk_fallen_empire = {
+	set_country_type = awakened_fallen_empire
+	# set_country_flag = cosmogenesis_fe_empire
+	give_technology = tech_cosmogenesis_world
+	add_awakened_fallen_empire_resources = yes
+	if = {
+		limit = {
+			is_gestalt = no
+		}
+		change_government = {
+			civics = {
+				civic = civic_revanchist_fervor
+				civic = civic_ancient_caches_of_technology
+			}
+			remove_invalid_civics = yes
+		}
+	}
+	else_if = {
+		limit = {
+			is_machine_empire = yes
+		}
+		change_government = {
+			civics = {
+				civic = civic_awakened_machine
+				civic = civic_final_defense_protocols
+			}
+			remove_invalid_civics = yes
+		}
+	}
+	else_if = {
+		limit = {
+			is_hive_empire = yes
+		}
+		change_government = {
+			civics = {
+				civic = civic_antediluvian_mind
+				civic = civic_sluggish_drones
+			}
+			remove_invalid_civics = yes
+		}
+	}
+
+	ruler = {
+		add_skill = 9
+	}
+	set_graphical_culture = fallen_empire_01
+	add_global_ship_design = "魊II"
+	add_global_ship_design = "魊I"
+	add_global_ship_design = "鬿I"
+	add_global_ship_design = "鬿II"
+	add_global_ship_design = "鬿III"
+	add_global_ship_design = "鬿IV"
+	add_global_ship_design = "魇III"
+	add_global_ship_design = "sk_FE_Starbase"
+	
+	#	create_fallen_empire_cosmogenesis_navy = yes
+	add_modifier = {
+		modifier = fe_ship_cost_modifier
+		days = -1
+	}
+	every_system = {
+		limit = {
+			exists = owner
+			owner = {
+				is_same_value = root
+			}
+			OR = {
+				NOT = { exists = sector }
+				sector = { has_sector_type = normal_sector }
+			}
+		}
+		every_fleet_in_system = {
+			limit = {
+				is_mobile = no
+			}
+			destroy_fleet = this
+		}
+	}
+
+	random_owned_planet = {
+		limit = {
+			is_capital = yes
+		}
+
+		create_sk_fallen_empire_planet = yes
+		add_all_resources_to_colony = yes
+
+		create_species = {
+			name = "魅"
+			class = "Schalebot"
+			portrait = "Schale"
+			traits = random
+			immortal = yes
+		}
+		#generate_start_pops = yes
+		while = {
+			count = 50
+			random_list = {
+				1 = {
+					modifier = {
+						add = 8
+						is_planet_class = pc_habitat
+					}
+					modifier = {
+						add = 4
+						is_planet_class = pc_hive
+					}
+					modifier = {
+						add = 4
+						is_planet_class = pc_machine
+					}
+				}
+				9 = {
+					create_pop = {
+						species = random
+						ethos = random
+					}
+				}
+			}
+		}
+	}
+
+#	every_planet_within_border = {
+#		limit = {
+#			exists = owner
+#			is_planet_class = pc_cosmogenesis_world
+#		}
+#
+#		while = {
+#			limit = {
+#				num_pops > 0
+#			}
+#			random_owned_pop = {
+#				kill_pop = yes
+#			}
+#		}
+#		destroy_colony = yes
+#
+#		solar_system = {
+#			spawn_megastructure = {
+#				type = cosmogenesis_world_ruined
+#				coords_from = PREV
+#			}
+#			random_system_planet = {
+#				limit = {
+#					has_planet_flag = has_cosmogenesis_world
+#				}
+#				remove_planet_flag = has_cosmogenesis_world
+#				remove_planet_flag = has_megastructure
+#			}
+#		}
+#
+#		remove_planet = yes
+#	}
+
+	every_planet_within_border = {
+		limit = {
+			exists = sector
+			sector = { has_sector_type = core_sector }
+
+			is_colonizable = yes
+		}
+
+		create_colony = {
+			owner = root
+			species = root.species
+		#	ethos = random
+		}
+
+		create_fallen_empire_planet = yes
+	}
+
+	every_system = {
+		limit = {
+			exists = owner
+			owner =  {
+				is_same_value = root
+			}
+			exists = starbase
+		}
+		make_sk_citadel = yes
+	}
+}
+create_sk_fallen_empire_planet = {
+
+	set_planet_flag = fallen_empire_world
+
+	if = {
+		limit = {
+			is_artificial = no
+			root = {
+				is_gestalt = no
+			}
+		}
+		change_pc = pc_city
+	}
+
+	if = {
+		limit = {
+			is_artificial = no
+			root = {
+				is_hive_empire = yes
+			}
+		}
+		change_pc = pc_hive
+	}
+
+	if = {
+		limit = {
+			is_artificial = no
+			root = {
+				is_machine_empire = yes
+			}
+		}
+		change_pc = pc_machine
+	}
+
+	remove_all_buildings = yes
+
+	if = {
+		limit = {
+			root = { is_machine_empire = yes }
+		}
+		add_building = building_ancient_control_center
+	}
+	if = {
+		limit = {
+			root = { is_hive_empire = yes }
+		}
+		add_building = building_ancient_hive_capital
+	}
+	else = {
+		add_building = building_ancient_palace
+	}
+
+	add_building = building_fe_stronghold
+	if = {
+		limit = {
+			root = {
+				OR = {
+					is_gestalt = no
+					has_valid_civic = civic_machine_servitor
+				}
+			}
+		}
+		add_building = building_affluence_center
+		add_building = building_affluence_center
+	}
+	else = {
+		add_building = building_class_4_singularity
+		add_building = building_fe_security_2
+	}
+	add_building = building_nourishment_center
+	add_building = building_class_4_singularity
+	add_building = building_dimensional_fabricator
+	add_building = building_fe_mine_2
+	add_building = building_nano_forge
+	add_building = building_nano_forge
+	add_building = building_fe_dome
+	add_building = building_fe_administration_hive_2
+
+	remove_all_districts = yes
+	if = {
+		limit = {
+			is_planet_class = pc_city
+		}
+		while = {
+			limit = {
+				free_district_slots > 0
+			}
+			random_list = {
+				3 = { add_district = district_arcology_housing }
+				1 = { add_district = district_arcology_arms_industry }
+				1 = { add_district = district_arcology_civilian_industry }
+				1 = { add_district = district_arcology_leisure }
+				1 = { add_district = district_arcology_administrative }
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			is_planet_class = pc_ringworld_habitable
+		}
+		while = {
+			limit = {
+				free_district_slots > 0
+			}
+			random_list = {
+				3 = { add_district = district_rw_city }
+				1 = { add_district = district_rw_generator }
+				1 = { add_district = district_rw_farming }
+				1 = { add_district = district_rw_industrial }
+			}
+		}
+	}
+
+	else_if = {
+		limit = {
+			is_planet_class = pc_habitat
+		}
+		while = {
+			limit = {
+				free_district_slots > 0
+			}
+			add_district = district_hab_housing
+		}
+	}
+
+	else_if = {
+		limit = {
+			is_planet_class = pc_hive
+		}
+		while = {
+			limit = {
+				free_district_slots > 0
+			}
+			random_list = {
+				3 = { add_district = district_hive }
+				1 = { add_district = district_generator_uncapped }
+				1 = { add_district = district_mining_uncapped }
+				1 = { add_district = district_farming_uncapped }
+			}
+		}
+	}
+
+	else_if = {
+		limit = {
+			is_planet_class = pc_machine
+		}
+		while = {
+			limit = {
+				free_district_slots > 0
+			}
+			random_list = {
+				3 = { add_district = district_nexus}
+				1 = { add_district = district_generator_uncapped }
+				1 = { add_district = district_mining_uncapped }
+				1 = { add_district = district_farming_uncapped }
+			}
+		}
+	}
+	while = {
+		count = 50
+		random_list = {
+			1 = {
+				modifier = {
+					add = 8
+					is_planet_class = pc_habitat
+				}
+				modifier = {
+					add = 4
+					is_planet_class = pc_hive
+				}
+				modifier = {
+					add = 4
+					is_planet_class = pc_machine
+				}
+			}
+			9 = {
+				create_pop = {
+					species = last_created_species
+					ethos = random
+				}
+			}
+		}
+	}
+
+	while = {
+		count = 20
+		random_list = {
+			1 = {
+				modifier = {
+					factor = 0
+					exists = owner
+					owner = {
+						is_machine_empire = no
+					}
+				}
+				create_army = {
+					name = random
+					owner = root
+					species = root
+					type = "machine_assault_2"
+				}
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					exists = owner
+					owner = {
+						NOT = { has_tradition = tr_psionics_finish }
+					}
+				}
+				create_army = {
+					name = random
+					owner = root
+					species = root
+					type = "psionic_army"
+				}
+			}
+
+			1 = {
+				modifier = {
+					factor = 0
+					exists = owner
+					owner = {
+						NOT = { has_tradition = tr_genetics_finish }
+					}
+				}
+				create_army = {
+					name = random
+					owner = root
+					species = root
+					type = "gene_warrior_army"
+				}
+			}
+
+			1 = {
+				modifier = {
+					factor = 0
+					exists = owner
+					owner = {
+						OR = {
+							has_tradition = tr_genetics_finish
+							has_tradition = tr_psionics_finish
+							is_machine_empire = yes
+						}
+					}
+				}
+				create_army = {
+					name = random
+					owner = root
+					species = root
+					type = "xenomorph_army"
+				}
+			}
+		}
+	}
+}
+
+add_all_resources_to_colony = {
+	while = {
+		count = 10
+		add_deposit = d_minerals_10
+		add_deposit = d_food_10
+		add_deposit = d_alloys_10
+		add_deposit = d_artifacts_planet_3
+		#add_deposit = d_trade_value_10
+	}
+	while = {
+		count = 20
+		#add_deposit = d_energy_10
+		#add_deposit = d_minerals_10
+		#add_deposit = d_food_10
+		#add_deposit = d_alloys_10
+		add_deposit = d_energy_10
+		add_deposit = d_vast_unity_deposit
+		add_deposit = d_hab_consumer_goods_2
+		add_deposit = d_dark_matter_deposit_10
+		add_deposit = d_volatile_motes_5
+		add_deposit = d_rare_crystals_5
+		add_deposit = d_exotic_gases_5
+		add_deposit = d_nanites_deposit
+		add_deposit = d_zro_deposit_5
+		add_deposit = d_zro_deposit_5
+		add_deposit = d_sentinels_metal
+		#add_deposit = d_trade_value_10
+		#while = {
+		#	count = 2
+		#	add_deposit = d_vast_unity_deposit
+		#}
+	}
+	set_planet_flag = all_resources_added
+}
+spawn_cosmogenesis_world = {
+	this.solar_system = {
+		spawn_planet = {
+			class = "pc_cosmogenesis_world"
+			location = prev
+			orbit_location = yes
+			orbit_angle_offset = 45
+			orbit_distance_offset = 19.799
+			plane_offset = 5
+			size = 2
+			has_ring = no
+	
+			init_effect = {
+				set_name = {
+					key = pc_cosmogenesis_world
+				}
+				set_planet_entity = {
+					entity = "neural_calculator_phase_1_entity"
+				}
+				set_surveyed = {
+					surveyed = yes
+					surveyor = FROM
+				}
+				set_all_comms_surveyed = yes
+				clear_blockers = yes
+	
+				# set_planet_flag = megastructure
+				# set_planet_flag = cosmogenesis_world_resettle@from
+	
+				prev = {
+					# set_planet_flag = has_megastructure
+					# set_planet_flag = has_cosmogenesis_world
+					if = {
+						limit = { has_orbital_station = yes }
+						orbital_station = {
+							dismantle = yes
+						}
+					}
+				}
+	
+				set_owner = prev.controller
+				set_controller = prev.controller
+				create_pop = {
+					species = root.species
+				}
+				from = {
+					room_name_override = ""
+				}
+			}
+		}	
 	}
 }
