@@ -1649,7 +1649,7 @@ assult_on_planet = {
 		}
 	}
 	create_sk_marauder_constructors = yes
-	create_sk_marauder_fleet = yes
+	create_sk_warship_fleet = yes
 	solar_system = { 
 		if = {
 			limit = { exists = starbase }
