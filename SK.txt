@@ -608,35 +608,7 @@
 		change_pc = pc_gaia
 	}
 	effect = {
-		create_species = {
-			name = "魅"
-			class = "Schalebot"
-			portrait = "Schale"
-			traits = random
-			immortal = yes
-		}	
-		create_late_pre_ftl_empire= yes
-		setup_pre_ftl_planet = yes
-		create_country = {
-			name = "魊"
-			type = default
-			ignore_initial_colony_error = yes
-			authority = auth_democratic
-			civics = random
-			species = last_created_species
-			ethos = random
-			flag = random
-			set_graphical_culture = "cybernetics_01"
-			effect = {
-				add_resource = {
-					minerals = 40000
-					energy = 40000
-					food = 40000
-					consumer_goods = 40000
-					influence = 1000
-				}
-			}
-		}
+		assult_on_planet = yes 
 	}
 	#change to gaia planet
 	effect set_planet_size = 30

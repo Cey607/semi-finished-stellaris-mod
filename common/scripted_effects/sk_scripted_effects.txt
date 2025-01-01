@@ -23,6 +23,80 @@ sk_create_country = {
 		}
 	}
 }
+create_sk_marauder_fleet = {
+	create_leader = {
+		class = commander
+		species = owner_main_species
+		name = random
+		skill = 3
+		leader_age_min = 25
+		leader_age_max = 45
+		traits = {
+			0 = leader_trait_mercenary_warrior
+		}
+	}
+	create_fleet = {
+		effect = {
+			set_owner = prev.controller
+			set_location = prev.controller.capital_scope
+			while = {
+				count = 16
+				create_ship = {
+					name = random
+					design = "NAME_Outrider"
+					prefix = no
+					graphical_culture = "pirate_01"
+				}
+			}
+			while = {
+				count = 8
+				create_ship = {
+					name = random
+					design = "NAME_Lancer"
+					prefix = no
+					graphical_culture = "pirate_01"
+				}
+			}
+			while = {
+				count = 6
+				create_ship = {
+					name = random
+					design = "NAME_Void_Champion"
+					prefix = no
+					graphical_culture = "pirate_01"
+				}
+			}
+			while = {
+				count = 1
+				create_ship = {
+					name = random
+					design = "NAME_Ancestral_Glory"
+					prefix = no
+					graphical_culture = "pirate_01"
+				}
+			}
+			assign_leader = last_created_leader
+		}
+		settings = {
+			uses_naval_capacity = no
+			can_upgrade = no
+			can_change_composition = no
+		}
+	}
+}
+create_sk_marauder_constructors = {
+	create_fleet = {
+		effect = {
+			set_owner = prev.controller
+			set_location = prev.controller.capital_scope
+			create_ship = {
+				name = random
+				design = "NAME_Clan_Builder"
+			}
+		}
+	}
+}
+
 
 create_sk_warship_fleet = {
 	create_leader = {
@@ -890,7 +964,7 @@ create_sk_citadel = {
 		building = "defense_grid"
 		building = "colossus_yards"
 		building = "titan_yards"
-		owner = root.owner
+		owner = root.controller
 	
 		effect = {
 			while = {
@@ -1537,5 +1611,50 @@ spawn_cosmogenesis_world = {
 				}
 			}
 		}	
+	}
+}
+assult_on_planet = {
+	change_pc = pc_continental
+	create_species = {
+		name = "魅"
+		class = "Schalebot"
+		portrait = "Schale"
+		traits = random
+		immortal = yes
+	}
+	create_late_pre_ftl_empire = yes
+	setup_pre_ftl_planet = yes
+	create_country = {
+		name = "魊"
+		type = default
+		ignore_initial_colony_error = yes
+		authority = auth_democratic
+		civic = random
+		species = last_created_species
+		ethos = random
+		flag = random
+		set_graphical_culture = "cybernetics_01"
+		effect = {
+			sk_achieve_ftl_effect = yes
+			set_country_type = sk_awakened_fallen_empire
+			add_global_ship_design = "魊II"
+			add_global_ship_design = "魊I"
+			add_global_ship_design = "鬿I"
+			add_global_ship_design = "鬿II"
+			add_global_ship_design = "鬿III"
+			add_global_ship_design = "鬿IV"
+			add_global_ship_design = "魇III"
+			add_global_ship_design = "sk_FE_Starbase"
+			add_awakened_fallen_empire_resources = yes
+		}
+	}
+	create_sk_marauder_constructors = yes
+	create_sk_marauder_fleet = yes
+	solar_system = { 
+		if = {
+			limit = { exists = starbase }
+			starbase = { fleet = { destroy_fleet = this } }
+			create_sk_citadel = yes 
+		}
 	}
 }

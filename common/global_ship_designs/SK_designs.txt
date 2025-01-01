@@ -146,7 +146,7 @@ ship_design = {
 	required_component="SHIP_AURA_QUANTUM_DESTABILIZER"
 
 	is_special_buildable = yes
-	allow_buildable_trigger = is_player
+	allow_buildable_trigger = is_sk_country
 }
 ship_design = {
 	name="sk_battleship"
@@ -601,7 +601,7 @@ ship_design = {
 
 	# For special buildable
 	is_special_buildable = yes
-	allow_buildable_trigger = is_player
+	allow_buildable_trigger = is_sk_country
 }
 ship_design = {
 	name = "鬿II"
@@ -702,7 +702,7 @@ ship_design = {
 	required_component="DESTROYER_SHIP_THRUSTER_5"
 
 	is_special_buildable = yes
-	allow_buildable_trigger = is_player
+	allow_buildable_trigger = is_sk_country
 
 }
 ship_design = {
@@ -810,7 +810,7 @@ ship_design = {
 	required_component="PLATFORM_DARK_MATTER_REACTOR"
 
 	is_special_buildable = yes
-	allow_buildable_trigger = is_player
+	allow_buildable_trigger = is_sk_country
 }
 ship_design = {
 	name = "魊II"
@@ -1005,7 +1005,7 @@ ship_design = {
 	required_component = "BATTLESHIP_ZERO_POINT_REACTOR"
 
 	is_special_buildable = yes
-	allow_buildable_trigger = is_player
+	allow_buildable_trigger = is_sk_country
 }
 ship_design = {
 	name = "魇I"
@@ -1179,7 +1179,7 @@ ship_design = {
 	required_component="COLOSSUS_SHIP_THRUSTER_5"
 
 	is_special_buildable = yes
-	allow_buildable_trigger = is_player
+	allow_buildable_trigger = is_sk_country
 
 }
 ship_design = {
@@ -1354,7 +1354,7 @@ ship_design = {
 	required_component="COLOSSUS_SHIP_THRUSTER_5"
 
 	is_special_buildable = yes
-	allow_buildable_trigger = is_player
+	allow_buildable_trigger = is_sk_country
 
 }
 ship_design = {
@@ -1529,7 +1529,7 @@ ship_design = {
 	required_component="COLOSSUS_SHIP_THRUSTER_5"
 
 	is_special_buildable = yes
-	allow_buildable_trigger = is_player
+	allow_buildable_trigger = is_sk_country
 }
 ship_design = {
 	name = "鬿I"
@@ -1610,7 +1610,7 @@ ship_design = {
 	required_component="SHIP_THRUSTER_5"
 
 	is_special_buildable = yes
-	allow_buildable_trigger = is_player
+	allow_buildable_trigger = is_sk_country
 
 }
 ship_design = {
@@ -1664,5 +1664,5 @@ ship_design = {
 	required_component="SENSOR_4"
 
 	is_special_buildable = yes
-	allow_buildable_trigger = is_player
+	allow_buildable_trigger = is_sk_country
 }

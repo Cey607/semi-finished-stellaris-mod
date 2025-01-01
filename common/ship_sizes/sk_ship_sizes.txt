@@ -215,13 +215,15 @@ sk_regular_titan = {
 
 	ai_ship_data = {
 		min = 1
-		max = 15
+		max = 10
 		planet_mult = 0.1
 	}	
 	potential_country = {
 		OR = {
-			is_country_type = sk_pirate
 			is_ai = no
+			is_country_type = sk_assult_country
+			is_country_type = sk_pirate
+			is_country_type = sk_awakened_fallen_empire
 		}
 	}
 }
@@ -279,13 +281,15 @@ sk_warship_small= {
 	is_designable = yes
 	potential_country = {
 		OR = {
-			is_country_type = sk_pirate
 			is_ai = no
+			is_country_type = sk_assult_country
+			is_country_type = sk_pirate
+			is_country_type = sk_awakened_fallen_empire
 		}
 	}
 
 	ai_ship_data = {
-		fraction = 1
+		fraction = 120
 	}
 }
 
@@ -341,13 +345,15 @@ sk_warship_large = {
 	is_designable = yes
 	potential_country = {
 		OR = {
-			is_country_type = sk_pirate
 			is_ai = no
+			is_country_type = sk_assult_country
+			is_country_type = sk_pirate
+			is_country_type = sk_awakened_fallen_empire
 		}
 	}
 
 	ai_ship_data = {
-		fraction = 1 #note: this is naval cap use, it divides by size_multiplier
+		fraction = 160 #note: this is naval cap use, it divides by size_multiplier
 	}
 }
 sk_military_station_small = {
@@ -401,8 +407,10 @@ sk_military_station_small = {
 
 	potential_country = {
 		OR = {
-			is_country_type = sk_pirate
 			is_ai = no
+			is_country_type = sk_assult_country
+			is_country_type = sk_pirate
+			is_country_type = sk_awakened_fallen_empire
 		}
 	}
 	potential_construction = {
@@ -471,8 +479,10 @@ sk_military_station_large = {
 	icon = ship_size_military_station
 	potential_country = {
 		OR = {
-			is_country_type = sk_pirate
 			is_ai = no
+			is_country_type = sk_assult_country
+			is_country_type = sk_pirate
+			is_country_type = sk_awakened_fallen_empire
 		} 
 	}
 	potential_construction = {
@@ -548,7 +558,7 @@ sk_wenkwort_enforcer = {
 
 	ai_ship_data = {
 		fraction = {
-			base = 0
+			base = 5
 		}
 	}
 }

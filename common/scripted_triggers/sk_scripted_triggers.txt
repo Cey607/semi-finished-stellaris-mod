@@ -1,3 +1,8 @@
-is_player = {
-    is_ai = no
+is_sk_country = {
+    OR = {
+        is_ai = no
+        is_country_type = sk_assult_country
+        is_country_type = sk_pirate
+        is_country_type = sk_awakened_fallen_empire
+    }
 }
