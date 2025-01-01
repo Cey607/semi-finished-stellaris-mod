@@ -1644,12 +1644,9 @@ assult_on_planet = {
 			add_global_ship_design = "鬿III"
 			add_global_ship_design = "鬿IV"
 			add_global_ship_design = "魇III"
-			add_global_ship_design = "sk_FE_Starbase"
 			add_awakened_fallen_empire_resources = yes
 		}
 	}
-	create_sk_marauder_constructors = yes
-	create_sk_warship_fleet = yes
 	solar_system = { 
 		if = {
 			limit = { exists = starbase }
