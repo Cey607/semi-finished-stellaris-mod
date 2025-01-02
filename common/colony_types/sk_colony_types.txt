@@ -130,6 +130,7 @@ col_SK_capital = {
 		exists = owner
 		owner = {
 			OR = {
+				is_country_type = sk_awakened_fallen_empire
 				is_country_type = sk_pirate
 				is_ai = no
 			}

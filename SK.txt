@@ -575,6 +575,7 @@
 	effect = { solar_system = { create_sk_citadel }} # 创建自定义擎天堡
 	effect = { make_sk_fallen_empire = yes }
 	effect add_awakened_fallen_empire_resources = yes
+	effect = { assult_on_planet = yes }
 
 	effect generate_late_pre_ftls_on_planet = yes #generate pre ftl
 	effect = { #ftl achieved
@@ -606,9 +607,6 @@
 	effect planet = {
 		set_planet_size = 27
 		change_pc = pc_gaia
-	}
-	effect = {
-		assult_on_planet = yes 
 	}
 	#change to gaia planet
 	effect set_planet_size = 30

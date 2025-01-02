@@ -6,3 +6,14 @@ is_sk_country = {
         is_country_type = sk_awakened_fallen_empire
     }
 }
+is_regular_empire = { ######狡猾
+	OR = {
+		is_country_type = default
+		#for checks in buildings and districts
+        is_country_type = sk_awakened_fallen_empire 
+		is_country_type = awakened_marauders
+		is_country_type = fallen_empire
+		is_country_type = awakened_fallen_empire
+	}
+	NOT = { has_ethic = ethic_gestalt_consciousness	}
+}

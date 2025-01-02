@@ -109,6 +109,7 @@ sk_district_city = {
 			exists = owner
 			owner = {
 				is_country_type = sk_pirate
+				is_country_type = sk_awakened_fallen_empire
 			}
 		}
 		modifier = {
