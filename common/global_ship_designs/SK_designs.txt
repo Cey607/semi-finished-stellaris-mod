@@ -1551,7 +1551,7 @@ ship_design = {
 		#	template = "SK_ARC_EMITTER_1"
 		#}
 		component = {
-			slot = "SMALL_GUN_0"
+			slot = "SMALL_GUN_01"
 			template = "SK_ARC_EMITTER_0"
 		}
 		#component = {
