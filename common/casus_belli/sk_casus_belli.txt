@@ -1,0 +1,11 @@
+cb_normal_war = {
+	show_in_diplomacy = yes
+	show_notification = no
+	potential = {
+		is_country_type = sk_default
+		NOT = { is_in_federation_with = from }
+	}
+	is_valid = {
+		is_country_type = sk_default
+	}
+}

@@ -567,7 +567,7 @@
 	effect set_country_type = awakened_fallen_empire
 
 	effect = { spawn_sk_fleet = yes } #创建鬿酱舰队
-	effect = { load_presets = yes }
+	effect = { load_presets = yes } # 加载预设
 	research_all_technologies 1 0
 	activate_ascension_perk ap_cosmogenesis # 解锁突触凝炼机
 	effect = { spawn_cosmogenesis_world = yes} # 生成突触凝炼机

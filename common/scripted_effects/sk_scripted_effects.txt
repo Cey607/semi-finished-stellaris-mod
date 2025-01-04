@@ -1072,14 +1072,15 @@ load_presets = {
 	add_global_ship_design = "鬿III"
 	add_global_ship_design = "鬿IV"
 	add_global_ship_design = "魇III"
-
+	set_country_type = sk_default
 	root.capital_scope = {
-		if = {
-			limit = {
-				NOT = { has_planet_flag = all_resources_added }
-			}
-			add_all_resources_to_colony = yes
-		}
+		#if = {
+		#	limit = {
+		#		NOT = { has_planet_flag = all_resources_added }
+		#	}
+		#	add_all_resources_to_colony = yes
+		#	set_planet_flag = all_resources_added
+		#}
 		solar_system = {
 			starbase = {
 				make_sk_citadel = yes

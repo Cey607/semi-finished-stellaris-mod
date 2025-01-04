@@ -180,7 +180,187 @@ sk_awakened_fallen_empire = {
 	}
 }
 
-#typhoeusSwarm_crisis_country = {
+sk_default = {
+	scaled_difficulty_bonuses = 3.0
+	counts_for_victory = yes
+	pop_growth = yes
+	playable = yes
+	has_pulse_events = yes
+	has_deficits = yes
+	piracy_risk = yes
+	randomize_ethos = yes
+	shuffle_pop_ethos = yes
+	needs_survey = no
+	diplomatic_wars = yes
+	ship_disengagement = yes
+	army_disengagement = yes
+	relations = yes
+	observable = yes
+	can_use_invalid_technology = no
+	can_receive_envoys = yes
+	ownership_limits = default
+	do_critters_age = yes
+	uses_special_buildables = yes
+
+	ai = {
+		enabled = yes
+		declare_war = yes
+		min_navy_for_wars = 0.5
+		min_assault_armies_for_wars = @armies_for_declaring_war
+		colonizer = yes
+		internal_policies = yes
+		modification = yes
+		government = yes
+		traditions = yes
+		ascension_perks = yes
+		construction = yes
+		follow = yes
+		can_use_market = yes
+		modules = {
+			military_minister_module
+			foreign_minister_module
+			interior_minister_module
+			mercenary_buyer_minister_module
+			enclave_founder_minister_module
+		}
+	}
+
+	trade_routes_available = {
+		is_gestalt = no
+	}
+
+	modules = {
+		standard_event_module = {}
+		standard_economy_module = {}
+		standard_leader_module = {}
+		standard_diplomacy_module = { contact_rule = does_first_contact_sites }
+		all_technology_module = {}
+		standard_trade_routes_module = {}
+		standard_pop_factions_module = {}
+		standard_expansion_module = {}
+		standard_species_rights_module = {}
+		standard_grand_archive_module = {}
+	}
+
+	resources = {
+		category = country_base
+		produces = {
+			energy = 20
+			minerals = 20
+			physics_research = 10
+			society_research = 10
+			engineering_research = 10
+			influence = 3
+			unity = 5
+			alloys = 5
+		}
+		produces = {
+			trigger = {
+				OR = {
+					is_gestalt = no
+					has_valid_civic = civic_machine_servitor
+				}
+			}
+			consumer_goods = 10
+		}
+		produces = {
+			trigger = {
+				OR = { #Either
+					# You're a non-lithoid non-individual machine, regular empire or hive mind
+					AND = {
+						is_individual_machine = no
+						is_lithoid_empire = no
+						OR = {
+							is_regular_empire = yes
+							is_hive_empire = yes
+						}
+					}
+					# You are a lithoid empire with a non-lithoid subspecies
+					AND = {
+						is_lithoid_empire = yes
+						has_country_flag = non_lithoid_subspecies
+					}
+					# Or a machine empire with a non-lithoid secondary species
+					AND = {
+						has_country_flag = non_lithoid_subspecies
+						is_machine_empire = yes
+					}
+					# Or an individual machine with a non-lithoid species
+					AND = {
+						is_individual_machine = yes
+						has_country_flag = non_lithoid_subspecies
+					}
+				}
+			}
+			food = 10
+		}
+		produces = {
+			trigger = {
+				# Either
+				OR = {
+					# You're a lithoid regular empire or hive mind
+					AND = {
+						is_lithoid_empire = yes
+						OR = {
+							is_regular_empire = yes
+							is_hive_empire = yes
+						}
+					}
+					# Or a machine empire with a lithoid secondary species
+					AND = {
+						has_country_flag = lithoid_subspecies
+						is_machine_empire = yes
+					}
+					# Or a machine empire with no secondary species
+					AND = {
+						is_machine_empire = yes
+						NOR = {
+							has_country_flag = lithoid_subspecies
+							has_country_flag = non_lithoid_subspecies
+						}
+					}
+				}
+			}
+			minerals = 10
+		}
+		produces = {
+			trigger = {
+				is_machine_empire = yes
+			}
+			energy = 10
+		}
+		produces = {
+			trigger = {
+				is_lithoid_empire = yes
+				has_valid_civic = civic_hive_cordyceptic_drones
+			}
+			food = 5
+			minerals = -5
+		}
+	}
+
+	# planet scope
+	resources = {
+		category = country_base
+		produces = {
+			energy = 5000
+			minerals = 2500
+			food = 5000
+			alloys = 5000
+			consumer_goods = 5000
+			rare_crystals = 100
+			exotic_gases = 100
+			volatile_motes = 100
+			sr_dark_matter = 20
+			sr_living_metal = 20
+			sr_zro = 50
+			unity = 50
+			influence = 30
+			nanites = 50
+			minor_artifacts = 50
+		}
+	}
+}
 
 sk_pirate = {
 	attack_unarmed_orbital_stations = yes
