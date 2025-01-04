@@ -105,7 +105,7 @@ sk_awakened_fallen_empire = {
 		tech = yes
 		traditions = yes #but no ascension perks!
 		modules = {
-			military_minister_module
+			berserk_military_minister_module
 			foreign_minister_module
 			interior_minister_module
 		}
