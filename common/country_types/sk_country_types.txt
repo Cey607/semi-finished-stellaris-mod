@@ -47,8 +47,8 @@ sk_assult_country = {
 		government = no
 		construction = yes
 		modules = {
-			machine_interior_minister_module
-			berserk_military_minister_module
+			interior_minister_module
+			player_crisis_military_minister_module
 		}
 	}
 

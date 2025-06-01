@@ -1,8 +1,8 @@
-version="3.11"
+version="4.*"
 tags={
 	"Balance"
 	"Events"
 	"Utilities"
 }
 name="skPersonalUse"
-supported_version="3.11.2"
+supported_version="*"
