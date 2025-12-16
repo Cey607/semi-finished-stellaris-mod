@@ -572,7 +572,8 @@
 	activate_ascension_perk ap_cosmogenesis # 解锁突触凝炼机
 	effect = { spawn_cosmogenesis_world = yes} # 生成突触凝炼机
 	effect = { make_sk_citadel = yes} #	改变为自定义擎天堡
-	effect = { solar_system = { create_sk_citadel }} # 创建自定义擎天堡
+	effect = { solar_system = { create_sk_citadel }} # 创建自定义擎天堡  
+	effect = {every_country = { end_truce = ROOT }}	# 终止停战协议
 	effect = { make_sk_fallen_empire = yes }
 	effect add_awakened_fallen_empire_resources = yes
 	effect = { assult_on_planet = yes }
