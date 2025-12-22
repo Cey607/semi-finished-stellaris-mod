@@ -6,4 +6,4 @@ tags={
 }
 name="skPersonalUse"
 supported_version="3.11.2"
-path="C:/Users/lovel/Desktop/stellaries mod/sk_mod"
+path="C:/Users/Vespera/Desktop/stellaris-SK/semi-finished-stellaris-mod"
